@@ -3,7 +3,6 @@ Easy Monitor is set of SuperKaramba themes and simple linux/gnu bash scripts.
 by Leszek Ostachowski
 
 1. Description
-
 ==============
 
 Easy Monitor is set of SuperKaramba themes and simple linux/gnu bash scripts.
@@ -13,7 +12,6 @@ My idea to give users very fast and easy access to change and fix code.
 So you can suit it to your system.
 
 2. Important
-
 ============
 
 If your theme based on my please, in accordance with licence GPL
@@ -30,7 +28,6 @@ Thanks to all bugs reporting.
 Themes need SuperKaramba 0.37 and KDE 3.5x or higher
 
 3. Installation
-
 ===============
 
 Can't find superkaramba package. Try install it manually !
@@ -56,21 +53,14 @@ __________________________________
 __________________________________
 
 mkdir EasyMonitor_install
-
 cd EasyMonitor_install
-
 wget -O EasyMonitor.zip https://sourceforge.net/projects/easy-monitor/files/latest/download
-
 unzip EasyMonitor.zip
-
 rm -f EasyMonitor.zip
-
 bash install_easy_monitor.sh
 
 Manuals are in ./doc folder
-
 4. How you can help
-
 ===================
 
 If you have idea comment
