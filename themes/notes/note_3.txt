@@ -1,0 +1,5 @@
+# That creates the files.tar.gz archive	: tar -czf files.tar.gz file* file*
+# Which you can then unpack using	: tar -xzf files.tar.gz
+
+# Backup witch preserve file atributes (do as root)	: cd Monunted_Partition; date; tar -cpzf /Destination/Distro.tar.gz *; date; echo " # Done #" 
+# Restore witch preserve file atributes (do as root)	: cd Monunted_Partition; date; tar -xpzf /Destination/Distro.tar.gz; date; echo " # Done #"

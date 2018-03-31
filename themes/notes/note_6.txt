@@ -1,0 +1,2 @@
+cd Source/; date; tar -cpzf /Dest/File.tar.gz *; date # Backup witch preserve file atributes (do as root)
+cd Source/; date; tar -xpzf /Dest/File.tar.gz; date   # Restore witch preserve file atributes (do as root)

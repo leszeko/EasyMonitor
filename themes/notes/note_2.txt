@@ -1,0 +1,2 @@
+# That creates the files.lzma archive 	: tar -cf files.lzma --lzma file* file* # -v  verbose option
+# Which you can then unpack using	: tar -xf files.lzma

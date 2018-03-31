@@ -1,0 +1,2 @@
+# That creates the files.zip archive	: zip -r files.zip file* file*
+# Which you can then unpack using	: unzip  files.zip

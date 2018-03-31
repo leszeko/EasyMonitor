@@ -1,0 +1,2 @@
+# That creates the files.xz archive 	: tar --xz -cf example.tar.xz file1 file2 file3 ;	or : tar --use-compress-program xz -cf example.tar.xz file1 file2 file3
+# Which you can then unpack using	: tar --xz -xf example.tar.xz ;				or : tar --use-compress-program xz -xf example.tar.xz
