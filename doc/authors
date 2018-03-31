@@ -1,0 +1,24 @@
+###################################################
+# Easy Monitor                                    #
+# Author: Leszek Ostachowski                      #
+# easy.monitor.theme@gmail.com                    #
+# Based on Crystal Monitor by                     #
+# Mihael Simonic                                  #
+# Licence: GPL v2                                 #
+# Tech background based on Tech Mon by Jon Clarke #
+# Nicolas Perret support ATI graphics card        #
+# Thanks to Iten (iten at free dot fr) 2004 for   #
+# hdmon.c source                                  #
+# And of course tanks to all Linux/GNU creators   #
+# and open source writers                         #
+###################################################
+
+Easy Monitor is set of SuperKaramba themes. Any of
+these themes you can edit and configure after lock
+its position on screen and click on top frame.
+My idea to give users fast and easy access to edit
+and fix code. So you can suit it to your system.
+To work all features You have to install some
+additional programs and modify sudoers rights.
+Go(o)d play time :) ; Read install.txt in ./doc
+Click on the bottom frame and select a theme

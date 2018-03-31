@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Application;Network;WebBrowser;X-Ximian-Main;X-Ximian-Toplevel;
+Comment[pl]=Web Browser open https://www.opendesktop.org
+Comment=Web Browser open https://www.opendesktop.org
+Encoding=UTF-8
+Exec=xdg-open https://www.opendesktop.org/c/1466502994/
+GenericName[pl]=
+GenericName=
+Icon=text-html
+MimeType=
+Name[pl]=opendesktop.org
+Name=opendesktop.org
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
