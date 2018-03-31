@@ -41,13 +41,21 @@ So you have to look for it on your own.
 Example:
 
 https://pkgs.org/
+
 https://software.opensuse.org/package/superkaramba
+
 https://www.rpmfind.net/linux/rpm2html/search.php?query=superkaramba&submit=Search+...
+
 http://rpm.pbone.net/index.php3/stat/2/simple/2
+
 http://archive.archlinux.org/packages/k/kdeutils-superkaramba/
+
 http://packages.linuxmint.com/search.php?release=any&section=any&keyword=superkaramba
+
 http://ftp.de.debian.org/debian/pool/main/s/superkaramba/
+
 https://packages.debian.org/unstable/kde/plasma-scriptengine-superkaramba
+
 
 Example installation EasyMonitor from sourceforge.net:
 __________________________________
