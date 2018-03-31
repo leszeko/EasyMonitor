@@ -1690,7 +1690,7 @@ Mount_device_name ()
 			df -BM "$Mount_Point_Device"
 			Log+="$Cream „$Volume”: $Device_Info is mounted on: $Mount_Point_Device$Nline"
 			cd "$Mount_Point_Device"
-			echo "$LCyan Tip: Twice Esc - run /bin/bas.$Reset"
+			echo "$LCyan Tip: Press twice Esc - run /bin/bash.$Reset"
 		fi
 		break
 	done
