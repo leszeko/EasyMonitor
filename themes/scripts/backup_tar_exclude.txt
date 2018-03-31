@@ -1,0 +1,14 @@
+*./BACKUPS
+./dev/*
+./lost+found
+./home/t
+./media/*
+./mnt/*
+./proc/*
+./run/*
+./sys/*
+./tmp/*
+./var/spool/*
+./var/run/*
+./var/tmp/*
+
