@@ -25,10 +25,10 @@ Thanks to Iten (iten at free dot fr) 2004 hdmon.c source
 Of course tanks to all Linux creators and open source writers 
 Thanks to all bugs reporting.
 
-Themes need SuperKaramba 0.37 and KDE 3.5x or higher
-
 3. Installation
 ===============
+
+Themes need SuperKaramba 0.37 and KDE 3.5x or higher or even any linux desktop
 
 Can't find superkaramba package. Try install it manually !
 
@@ -57,7 +57,11 @@ wget -O EasyMonitor.zip https://sourceforge.net/projects/easy-monitor/files/late
 unzip EasyMonitor.zip
 rm -f EasyMonitor.zip
 bash install_easy_monitor.sh
+
+__________________________________
+
 Manuals are in ./doc folder
+===================
 
 4. How you can help
 ===================
