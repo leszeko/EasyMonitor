@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE superkaramba_theme>
+<superkaramba_theme>
+  <icon>EasyMonitor.png</icon>
+  <description>Easy Monitor theme</description>
+  <author>Leszek Ostachowski based on Crystal Monitor by Mihael Simonic</author>
+  <license>GPL-2</license>
+</superkaramba_theme>
