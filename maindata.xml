@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE superkaramba_theme>
+<superkaramba_theme>
+  <name>Install Easy Monitor</name>
+  <themefile>EasyMonitor.theme</themefile>
+  <python_module>EasyMonitor.py</python_module>
+  <icon>/themes/icons/default/system-software-update.png</icon>
+  <description>Easy Monitor is set of SuperKaramba themes and bash scripts. Can display infos about your: distro, procesor, memory, disk usage, clock, network speed... and even do many: administrative, configuration, installation and backup tasks</description>
+  <author>Leszek Ostachowski (easy.monitor.theme@gmail.com) based on Crystal Monitor by Mihael Simonic</author>
+  <version>1.0.0 Hard Candy</version>
+  <license>GPL v2</license>
+</superkaramba_theme>
