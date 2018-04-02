@@ -126,10 +126,10 @@ Or if you are irritated at my charming bugs :)
 │───────────────────────────────────────────────┤├──────────────────┐   │
 │      │         local workspace        │       ││                  │   │
 │  C   │                                │       ││                  │   │
-│  R   ╞═════════ commit -a -m "" ═════►│       ││ remote workspace │   │
+│  R   ╞═════ git commit -a -m "" ═════►│       ││ remote workspace │   │
 │  A   │                │               │       ││         │        │   │
-│  T   ╞════ add -u ═══►╞══ commit ════►│       ││         │        │   │
-│  E   │                │               │╞═════ push ═════►│        │   │
+│  T   ╞══ git add -u ═►╞═ git commit ═►│       ││         │        │   │
+│  E   │                │               │╞═ git push ═════►│        │   │
 │      │                │               │       ││         │        │   │
 │╭─────────────╮ ╭─────────────╮ ╭─────────────╮││  ╭─────────────╮ │   │
 ││             │ │             │ │    local    │││  │   remote    │ │   │
@@ -137,8 +137,8 @@ Or if you are irritated at my charming bugs :)
 ││             │ │             │ │ reprository │││  │ reprository │ │   │
 │╰─────────────╯ ╰─────────────╯ ╰─────────────╯││  ╰─────────────╯ │   │
 │ R    │                │               │       ││         │        │   │
-│ E    │◄══════════════════════════ pull or rebase ════════╡        │   │
-│ V    │                │               │◄═════ fetch ═════╡        │   │
+│ E    │◄══════════════════════ git pull or rebase ════════╡        │   │
+│ V    │                │               │◄═ git fetch ═════╡        │   │
 │ E    │                │               │       ││                  │   │
 │ R    │◄══════ checkout HEAD ══════════╡       ││                  │   │
 │ T    │                │               │       ││                  │   │
