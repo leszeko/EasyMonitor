@@ -104,7 +104,7 @@ mv ~/.superkaramba/EasyMonitor ~/.superkaramba/Easy_Monitor_$(date +%Y_%m_%d-%H_
 cd ~/.superkaramba
 git clone https://github.com/leszeko/EasyMonitor.git
 
-# * if first time full install
+# * if first time then for full install
 
 cd EasyMonitor
 bash install_easy_monitor.sh

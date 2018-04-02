@@ -97,7 +97,7 @@ cd ~/.superkaramba
 git clone https://github.com/leszeko/EasyMonitor.git
 
 
-# * if first time full install
+# * if first time then for full install
 
 cd EasyMonitor
 
@@ -116,3 +116,40 @@ Manuals are in ./doc folder
 If you have idea comment
 (easy.monitor.theme@gmail.com)
 Or if you are irritated at my charming bugs :)
+
+5. Just for imformation.
+
+===================
+
+│───────────────────────────────────────────────────────────────────────│──
+│                      Git Data Transfer Sheme                          │
+│───────────────────────────────────────────────┤├──────────────────┐   │
+│      │         local workspace        │       ││                  │   │
+│  C   │                                │       ││                  │   │
+│  R   ╞═══════════ commit -a ═════════►│       ││ remote workspace │   │
+│  A   │                │               │       ││         │        │   │
+│  T   ╞══ add (-u ) ══►╞══ commit ════►│       ││         │        │   │
+│  E   │                │               │╞═════ push ═════►│        │   │
+│      │                │               │       ││         │        │   │
+│╭─────────────╮ ╭─────────────╮ ╭─────────────╮││  ╭─────────────╮ │   │
+││             │ │             │ │    local    │││  │   remote    │ │   │
+││ workspace   │ │    index    │ │             │││  │             │ │   │
+││             │ │             │ │ reprository │││  │ reprository │ │   │
+│╰─────────────╯ ╰─────────────╯ ╰─────────────╯││  ╰─────────────╯ │   │
+│ R    │                │               │       ││         │        │   │
+│ E    │◄══════════════════════════ pull or rebase ════════╡        │   │
+│ V    │                │               │◄═════ fetch ═════╡        │   │
+│ E    │                │               │       ││                  │   │
+│ R    │◄══════ checkout HEAD ══════════╡       ││                  │   │
+│ T    │                │               │       ││                  │   │
+│      │◄═══ checkout ══╡               │       ││                  │   │
+│ C    │                │               │       ││                  │   │
+│ O    ╞═══════════ diff HEAD ══════════╡       ││                  │   │
+│ M    │                │               │       ││                  │   │
+│ P    ╞═════ diff ═════╡               │       ││                  │   │
+│ A    │                │               │       ││                  │   │
+│ R    │                │               │       ││                  │   │
+│ E    │                │               │       ││                  │   │
+│───────────────────────────────────────────────┤├──────────────────┘   │
+│                                                                       │
+│───────────────────────────────────────────────────────────────────────│──
