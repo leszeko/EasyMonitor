@@ -1,2 +1,0 @@
-# That creates the files.cpio archive	: ls | cpio -ov > filws.cpio
-# Which you can then unpack using	: cpio -idv < files.cpio

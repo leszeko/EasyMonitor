@@ -1,6 +1,0 @@
-[Desktop Entry]
-Icon=text-html
-Name[pl]=lm-sensors.org
-Name=lm-sensors.org
-Type=Link
-URL[$e]=http://lm-sensors.org/
