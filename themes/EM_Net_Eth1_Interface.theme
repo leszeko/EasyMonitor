@@ -1,0 +1,137 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Net_Eth1_Interface.theme Super Karamba theme
+################################################
+#                                              #
+#  Single Ethernet Interface eth1              #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=120	locked=false
+defaultfont font="LiberationSans" color=220,220,220 fontsize=9 shadow=1 bgcolor=0,0,0
+
+###############################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Net_Eth1_Interface.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=90	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=105	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=90	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=105	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=105	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+###############################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#         Ethernet Interface eth1              #
+#                                              #
+################################################
+
+################################################
+# Title Lines
+
+text x=20 y=12 value="Network eth1: IP adress |  Gateway  |   Name Servers" fontsize=10
+
+clickarea	x=18	y=11	h=12 w=250 preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/network_info.sh; exit 0"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="cd $HOME/.superkaramba/EasyMonitor/themes/scripts/; kate nmap.sh network_info.sh net_iwconfig.sh net_ifconfig.sh net_dns_info.sh ip_info.sh; exit 0"
+
+################################################
+# Networking Info Lines
+
+text x=60 y=30 sensor=program program="$(whereis -b ifconfig|awk '{print $2}') eth1 | grep 'inet ' | cut -d t -f2 | cut -d ' ' -f2 | cut -d ':' -f2 | cut -d / -f1" interval=360000
+#or
+#text x=60 y=30 sensor=program program="$(whereis -b ip|awk '{print $2}') addr show eth1 | grep "inet " | cut -d t -f2 | cut -d ' ' -f2 | cut -d / -f1" interval=360000
+
+
+text x=207 y=30  align=right sensor=program program="$(whereis -b route|awk '{print $2}') -n | grep 'UG' |awk '{print $2, $8}' | head -n1" interval=360000
+
+text x=285 y=30  align=right sensor=program program="cat /etc/resolv.conf |grep 'nameserver' | sort -r | awk '{print NR,$0 }' |grep '2 '| awk '{print $3}'" interval=360000
+
+text x=285 y=40  align=right sensor=program program="cat /etc/resolv.conf |grep 'nameserver' | sort -r | awk '{print NR,$0 }' |grep '1 '| awk '{print $3}'" interval=360000
+
+################################################
+# Public IP:
+
+text x=60 y=40 value="Public IP:" 
+
+text x=110 y=40  align=left sensor=program program="public_ip=$(wget -O - http://checkip.dyndns.org/index.html | cut -d ' ' -f 6 | cut -d '<' -f 1);echo $public_ip" interval=350000
+
+################################################
+# ethtool eth1 Speed Info Lines
+
+text x=60 y=50 color=1,160,247 fontsize=8 value="Local link" 
+
+text x=98 y=50 aling=left color=1,160,247 fontsize=8 sensor=program program="sh $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ethtool.sh eth1; exit " interval=360000 
+#or
+#text x=100 y=50 aling=left color=1,160,247 fontsize=8 sensor=program program="dmesg |grep 'eth1: link' | awk '{print $3, $6, $7, $8, $9}'" interval=360000
+
+text  x=165 y=50 color=1,247,1 fontsize=8 value="Rx"
+text  x=225 y=50 align=right color=1,247,1 fontsize=8 decimals=1 sensor=network device="eth1" format="%in KB/s" interval=3000
+
+text  x=206 y=60 color=1,247,1 fontsize=8 value="Load"
+text x=286 y=60 align=right color=1,247,1 fontsize=8 sensor=program program="$(whereis -b ifconfig|awk '{print $2}') eth1 | grep 'RX' | grep 'bytes'| cut -d '(' -f2 | cut -d ')' -f1" interval=15000 
+
+text  x=232 y=50 color=247,1,1 fontsize=8 value="Tx"
+
+text  x=286 y=50 align=right color=247,1,1 fontsize=8  decimals=1 sensor=network device="eth1" format="%out KB/s" interval=3000
+text  x=206 y=70 color=247,1,1 fontsize=8 value="Send"
+text x=286 y=70 align=right color=247,1,1 fontsize=8 sensor=program program="$(whereis -b ifconfig|awk '{print $2}') eth1 | grep 'TX' | grep 'bytes'| cut -d 'T' -f2 | cut -d '(' -f2 | cut -d ')' -f1" interval=15000 
+
+################################################
+# eth1 Speed graph
+
+text  x=60 y=60 color=1,247,1 fontsize=8 value="Downstream"
+text  x=60 y=70 color=247,1,1 fontsize=8 value="Upstream"
+
+image x=116 y=60 path="graphics/default/fcpu_quad_2.png"
+
+graph x=116 y=61 w=83 h=17 color=247,1,1 points=100 sensor=network format="%out" device="eth1" max=200 interval=3100
+
+graph x=117 y=60 w=82 h=15 color=1,247,1 points=100 sensor=network format="%in" device="eth1" max=1500 interval=3100
+
+################################################
+# Connections TCP / UDP
+
+text x=60 y=82 value="TCP connections:"
+text x=144 y=82  align=left sensor=program program="netstat  |grep -Fc 'tcp'" interval=40000
+
+text x=160 y=82 value="UDP connections:"
+text x=246 y=82  align=left sensor=program program="netstat -lu |grep -Fc 'udp'" interval=50000
+
+################################################
+# Click-areas
+
+image x=20 y=35 path="icons/default/network.png"
+clickarea x=20 y=35 h=40 w=40 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ifconfig.sh; exit 0"
+
+clickarea x=130 y=30 h=10 w=60 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/nmap.sh '192.168.1.* 192.168.0.* 10.0.0.*'; exit 0"
+
+clickarea x=60 y=84 h=10 w=85 preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Netstat_TCP.theme; exit 0"
+
+clickarea x=160 y=84 h=10 w=85 preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Netstat_UDP.theme; exit 0"
+
+image x=270 y=80 path="icons/default/script_edit.png"
+clickarea x=270 y=80 h=10 w=10 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ifconfig.sh; kate $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ethtool.sh; kate $HOME/.superkaramba/EasyMonitor/themes/scripts/nmap.sh; exit 0"
+
+################################################
+</GROUP> =

@@ -1,0 +1,132 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Amarok.theme Super Karamba theme
+################################################
+#                                              #
+#  Single Theme Amarok Control                 #
+#                                              #
+################################################
+
+<GROUP>	X=0	Y=0
+################################################
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=100	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image	x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image	x=0	y=18	path="backrounds/areo/midle_bg_62_alfa_75.png"
+image	x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image	x=0	y=80	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Amarok.theme; exit 0"
+clickarea	x=0	y=0	h=100	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=284	y=0	h=100	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16	y=80	h=15	w=265	preview=false onclick="superkaramba"
+
+################################################
+</GROUP> =
+
+<GROUP>	X=0	Y=10
+################################################
+
+################################################
+#                                              #
+#               Amarok Control                 #
+#                                              #
+################################################
+
+################################################
+# Amarok Control Title Lines
+
+text x=100	y=10	fontsize=12	value="Amarok Control"
+
+################################################
+# Amarok Info Lines
+
+<GROUP>	x=60	y=30
+
+#################################
+# Comment below section if dcop
+
+text	x=0	y=2	color=0,255,0	value="Title:"
+text	x=25	y=2	color=0,255,0	sensor=program	program="qdbus org.kde.amarok /Player GetMetadata | grep title:; qdbus org.kde.amarok /Player GetMetadata | grep artist:"	interval=1000
+
+text	x=0	y=26	color=255,0,0		value="Time:"
+text	x=30	y=26	color=128,128,255	sensor=program	program="qdbus org.kde.amarok /Player GetMetadata | grep  time:| tail -n1 |awk '{print $2}'"	interval=1000
+
+#################################
+
+#################################
+# Uncomment below section if dcop
+
+#text x=0	y=8	color=0,255,0	value="Title:"
+#text x=25	y=8	color=0,255,0	sensor=program program="dcop amarok player nowPlaying"	interval=1000
+
+#text x=0	y=26	color=255,0,0	value="Time:"
+#text x=40	y=26	color=128,128,255	sensor=program program="dcop amarok player currentTime"	interval=1000
+#text x=70	y=26	value="/"
+#text x=85	y=26	color=255,255,0	sensor=program program="dcop amarok player totalTime"	interval=1000
+
+</GROUP> =
+
+################################################
+# Click Areas
+
+image		x=20	y=35	path="icons/default/amarok.png"
+clickarea	x=20	y=35	w=32	h=32	sensor=program onclick="amarok"
+
+################################################
+
+<GROUP>	x=180	y=55
+
+#################################
+# Uncomment below section if dbus
+
+image		x=0	y=0	path="graphics/default/play.png"
+clickarea	x=0	y=0	w=16	h=16	preview=false	onclick="dbus-send --type=method_call --dest=org.kde.amarok /Player org.freedesktop.MediaPlayer.Play"
+
+image		x=20	y=0	path="graphics/default/pause.png"
+clickarea	x=20	y=0	w=16	h=16	preview=false	onclick="dbus-send --type=method_call --dest=org.kde.amarok /Player org.freedesktop.MediaPlayer.Pause"
+
+image		x=40	y=0	path="graphics/default/stop.png"
+clickarea	x=40	y=0	w=16	h=16	preview=false	onclick="dbus-send --type=method_call --dest=org.kde.amarok /Player org.freedesktop.MediaPlayer.Stop"
+
+image		x=60	y=0	path="graphics/default/prev.png"
+clickarea	x=60	y=0	w=16	h=16	preview=false	onclick="dbus-send --type=method_call --dest=org.kde.amarok /Player org.freedesktop.MediaPlayer.Prev"
+
+image		x=80	y=0	path="graphics/default/next.png"
+clickarea	x=80	y=0	w=16	h=16	preview=false	onclick="dbus-send --type=method_call --dest=org.kde.amarok /Player org.freedesktop.MediaPlayer.Next"
+
+
+#################################
+# Uncomment below section if dcop
+
+#image		x=0	y=0	path="graphics/default/play.png"
+#clickarea	x=0	y=0	w=16	h=16	preview=false	onclick="dcop amarok player play"
+
+#image		x=20	y=0	path="graphics/default/pause.png"
+#clickarea	x=20	y=0	w=16	h=16	preview=false	onclick="dcop amarok player pause"
+
+#image		x=40	y=0	path="graphics/default/stop.png"
+#clickarea	x=40	y=0	w=16	h=16	preview=false	onclick="dcop amarok player stop"
+
+#image		x=60	y=0	path="graphics/default/prev.png"
+#clickarea	x=60	y=0	w=16	h=16	preview=false	onclick="dcop amarok player prev"
+
+#image		x=80	y=0	path="graphics/default/next.png"
+#clickarea	x=80	y=0	w=16	h=16	preview=false	onclick="dcop amarok player next"
+
+
+################################################
+
+</GROUP> =

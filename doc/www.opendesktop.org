@@ -1,0 +1,6 @@
+[Desktop Entry]
+Icon=text-html
+Name[pl]=www.opendesktop.org
+Name=www.opendesktop.org
+Type=Link
+URL[$e]=https://www.opendesktop.org/c/1466502994/

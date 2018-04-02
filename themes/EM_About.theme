@@ -1,0 +1,68 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_About.theme Super Karamba theme
+################################################
+#                                              #
+#  Single Theme About                          #
+#                                              #
+################################################
+
+<GROUP>	X=0	Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=288	locked=true
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image	x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image	x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image	x=0	y=102	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image	x=0	y=186	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image	x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image	x=0	y=270	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=true onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_About.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=true onclick="kate"
+clickarea	x=0	y=15	h=255	w=15	preview=true onclick="xdg-open $HOME"
+clickarea	x=0	y=270	h=15	w=15	preview=true onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=255	w=15	preview=true onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=270	h=15	w=265	preview=true onclick="superkaramba"
+clickarea	x=284	y=270	h=15	w=15	preview=true onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP>	X=0	Y=10
+################################################
+
+################################################
+#                                              #
+#               About                          #
+#                                              #
+################################################
+
+################################################
+# Info Title Lines
+
+text	x=150	y=10	align=center	fontsize=12	value="About Easy Monitor"
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="xdg-open 'https://www.trinity-look.org/p/1105311'"
+
+image	x=230	y=38	path="icons/default/Leszek_Ostachowski.jpg"
+
+################################################
+# About Notes  Lines
+
+text		x=20	y=27	align=left	fontsize=8	font="monospace"	fixedpitch=true	sensor=program program="cat $HOME/.superkaramba/EasyMonitor/doc/authors; exit 0"	interval=3600000
+text		x=150	y=245	align=center	fontsize=12	color=0,255,0	value="Docs"
+clickarea	x=100	y=245	w=100	h=14	preview=true	onclick="xdg-open $HOME/.superkaramba/EasyMonitor/doc/" 
+
+################################################
+</GROUP> =

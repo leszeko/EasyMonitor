@@ -1,0 +1,102 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Top.theme Super Karamba theme
+################################################
+#                                              #
+#    Single Theme Top Monitor                  #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=120	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Top.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=90	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=105	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=90	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=105	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=105	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#               Top Monitor                    #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+# Namber of Tasks
+
+text	x=20	y=10	align=left	fontsize=11	value="Tasks :"
+text	x=60	y=10	align=left	fontsize=11	sensor=program program="ps xa | wc -l" interval=5000
+text	x=88	y=10	align=left	fontsize=11	value="COMMAND  USER  %CPU    ALL"
+
+# Click Areas
+
+clickarea	x=20	y=10	h=11	w=250	preview=false	onclick="konsole -e top"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/top_info.sh; exit 0"
+
+image		x=20	y=35	path="icons/default/top.png"
+clickarea	x=20	y=35	h=40	w=40	preview=false	onclick="konsole --hold -e pstree"
+
+################################################
+# Top Lines
+
+# List
+text	x=200	y=30	align=right	color=color=220,0,220	sensor=program program="ps axo comm,user,pcpu --sort -pcpu | head -n6 |tail -n5 "	interval=5000
+
+text	x=215	y=30	align=left	color=220,220,0		value="Running"
+text	x=255	y=30	align=left	color=220,220,0		value=":"
+text	x=260	y=30	align=left 	color=220,220,0		sensor=program program="ps axr| wc -l"	interval=1500
+
+text	x=215	y=45	align=left	color=220,0,0		value="Load"
+text	x=255	y=45	align=left	color=220,0,0		value=":"
+text	x=260	y=45	align=left	color=220,0,0		sensor=cpu cpu=all format=%load%	interval=1500
+
+text	x=215	y=60	align=left	color=0,128,255		value="System"
+text	x=255	y=60	align=left	color=0,128,255		value=":"
+text	x=260	y=60	align=left	color=0,128,255		sensor=cpu cpu=all format=%system%	interval=1500
+
+text	x=215	y=75	align=left	color=0,255,0		value="User"
+text	x=255	y=75	align=left	color=0,255,0		value=":"
+text	x=260	y=75	align=left	color=0,255,0		sensor=cpu cpu=all format=%user%	interval=1500
+
+################################################
+# Click Areas
+image		x=20	y=75	path="icons/default/system-shutdown1.png"
+clickarea	x=20	y=75	h=16	w=16	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND='kdesu -c' ; fi ; $COMMAND 'shutdown -h +60' ;exit 0"
+image		x=40	y=75	path="icons/default/system-shutdown2.png"
+clickarea	x=40	y=75	h=16	w=16	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND='kdesu -c' ; fi ; $COMMAND 'shutdown -h +90' ;exit 0"
+image		x=60	y=75	path="icons/default/system-shutdown3.png"
+clickarea	x=60	y=75	h=16	w=16	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND='kdesu -c'; fi ; $COMMAND 'shutdown -h 00:59' ;exit 0"
+
+################################################
+# End Top section
+
+################################################
+</GROUP> =

@@ -1,0 +1,111 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Qemu_Install_Systems.theme Super Karamba theme
+################################################
+#                                              #
+#  Single EM_Qemu_Install_Systems.theme        #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=368	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=186	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=270	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=354	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Qemu_Install_Systems.theme;exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=340	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=354	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=340	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=354	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=354	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#          EM Qemu Install Systems             #
+#                                              #
+################################################
+
+################################################
+# Qemu Install Systems Title Lines
+
+text x=150 y=10 value="Qemu Install Systems" fontsize=12 align=center
+clickarea	x=18	y=11	h=12 w=230 preview=false onclick="konsole --hold -e sudo blkid"
+
+image		x=254	y=8	path="icons/default/script_edit.png"
+clickarea	x=254	y=8	h=12 w=12 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/jump-for-stuff.sh; exit 0"
+
+image		x=270	y=8	path="icons/default/jump-for-stuff.png"
+clickarea	x=270	y=8	w=16	h=16	preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/jump-for-stuff.sh"
+
+################################################
+
+# Create hdd image with Grub
+text	  x=20	y=34 value="Create hdd image with Grub" align=left
+text	  x=205	y=34 value="Configure script" align=left
+clickarea x=200	y=32 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_create_boot_grub_disdk.image.sh; exit 0"
+image	  x=16	y=30 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18	y=32 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_create_boot_grub_disdk.image.sh"
+
+# Create floopy image
+text	  x=20	y=54 value="Create floopy image 1.44M" align=left
+text	  x=205	y=54 value="Configure script" align=left
+clickarea x=200	y=52 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_create_floopy.sh; exit 0"
+image	  x=16	y=50 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	y=52 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_create_floopy.sh"
+
+# Install React OS
+text	  x=20	y=74 value="Install React OS into qemu hdd image" align=left
+text	  x=205	y=74 value="Configure script" align=left
+clickarea x=200	y=72 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_qemu_react_os.sh; exit 0"
+image	  x=16	y=70 path="backrounds/areo/backtittle_red.png"
+clickarea x=18	y=72 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_qemu_react_os.sh"
+
+# Install an OS in qemu
+text	  x=20	y=94 value="Install an OS iso into qemu hdd image" align=left
+text	  x=205	y=94 value="Configure script" align=left
+clickarea x=200	y=92 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_qemu_iso_install.sh; exit 0"
+image	  x=16	y=90 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18	y=92 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_qemu_iso_install.sh"
+
+# HDT install
+text x=20 y=114 value="Install Hardware Detection Tool 0.5.2.iso" align=left
+text x=205 y=114 value="Configure script" align=left
+clickarea x=200 y=112  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_hdt-0.5.2.iso.sh; exit 0"
+image x=16 y=110 path="backrounds/areo/backtittle_red.png"
+clickarea x=18 y=112  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_hdt-0.5.2.iso.sh"
+
+# FreeDOS 10MB harddisk image
+text x=20 y=134 value="Install FreeDOS 10MB hard disk image" align=left
+text x=205 y=134 value="Configure script" align=left
+clickarea x=200 y=132  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_Free_DOS.sh; exit 0"
+image x=16 y=130 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18 y=132  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_Free_DOS.sh"
+
+
+################################################
+
+</GROUP> =

@@ -1,0 +1,94 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Gpu.theme Super Karamba theme
+################################################
+#                                              #
+#        Single GPU Monitor                    #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba x=0 y=0 w=304 h=100 locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_62_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=80	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Gpu.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=60	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=80	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=60	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=80	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=80	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#               GPU Monitor                    #
+#                                              #
+################################################
+
+
+###############################################
+# Title Lines
+
+# GPU Name Lines
+
+text x=20 y=10 sensor=program program="LSPCI_COMMAND=`whereis -b lspci | awk '{print $2}'`; $LSPCI_COMMAND | grep 'VGA' | sed -e 's/.*: //' | cut -c -51" fontsize=10 interval=3600000
+
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh; exit 0"
+
+# Edit xorg.conf file
+
+image x=270 y=50 path="icons/default/xorg-settings.png"
+
+clickarea x=270 y=50 h=10 w=10 preview=false onclick="if [ -f /etc/X11/xorg.conf ]; then kdesu kate /etc/X11/xorg.conf; fi; if [ -f /etc/X11/xorg.conf.d/*-device.conf ]; then kdesu kate /etc/X11/xorg.conf.d/*-device.conf; fi; kate $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh; exit 0"
+
+################################################
+# GPU Lines
+text x=60 y=26 sensor=program program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Info" interval=3600000
+
+################################################
+# GPU Temp Lines
+text x=60  y=58 value="GPU Temp:"
+text x=115 y=58 sensor=program program="echo $(bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Temp)°C" interval=36000
+
+################################################
+# GPU Fan Speed
+text x=235 y=58 sensor=program program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Fan" interval=37000
+
+################################################
+# GPU Temp Bar
+bar x=145  y=60 w=20 h=0 path="graphics/default/bar_cpu_temp.png" max=80. sensor=program program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Temp" interval=38000
+image x=145 y=60 path="graphics/default/grid_2.png"
+
+################################################
+# Click-areas
+image		x=20 y=35 path="icons/default/vga-settings.png"
+clickarea	x=20	y=35	h=30 w=40 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh"
+
+################################################
+# End GPU section
+
+################################################
+</GROUP> =

@@ -1,0 +1,42 @@
+#!/bin/bash
+# exclude_skz.lst for zip; echo argumnents line for source
+
+echo -x "*.svn*" -x "*.git*" -x "Sudoers_Entries_for_Easy_Monitor.txt" -x "Easy_Monitor.html"
+
+comment=<<-EOF
+http://ant.apache.org/manual/dirtasks.html#defaultexcludes
+Default Excludes
+
+There are a set of definitions that are excluded by default from all directory-based tasks. Since Ant 1.8.1 they are:
+
+**/*~
+**/#*#
+**/.#*
+**/%*%
+**/._*
+**/CVS
+**/CVS/**
+**/.cvsignore
+**/SCCS
+**/SCCS/**
+**/vssver.scc
+**/.svn
+**/.svn/**
+**/.DS_Store
+Since Ant 1.8.2, additional default excludes are:
+
+**/.git
+**/.git/**
+**/.gitattributes
+**/.gitignore
+**/.gitmodules
+**/.hg
+**/.hg/**
+**/.hgignore
+**/.hgsub
+**/.hgsubstate
+**/.hgtags
+**/.bzr
+**/.bzr/**
+**/.bzrignore
+EOF

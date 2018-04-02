@@ -1,0 +1,638 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Script_Runner.theme Super Karamba theme
+################################################
+#                                              #
+#  Single EM_Script_Runner.theme               #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=608 	h=788	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=186	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=270	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=354	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=438	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=522	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=606	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=690	path="backrounds/areo/midle_bg_84_alfa_75.png"
+
+image x=0	y=774	path="backrounds/areo/bottom_bar_alfa_75.png"
+###############################################
+image x=304	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=304	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=320	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=304	y=102	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=304	y=186	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=304	y=270	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=304	y=354	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=304	y=438	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=304	y=522	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=304	y=606	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=304	y=690	path="backrounds/areo/midle_bg_84_alfa_75.png"
+
+image x=304	y=774	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Script_Runner.theme;exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=755	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=773	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=755	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16	y=773	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=773	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+###############################################
+# Click-areas
+#284 - 588
+clickarea	x=304	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=320	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Script_Runner.theme;exit 0"
+clickarea	x=588	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=304	y=15	h=755	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=304	y=773	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=588	y=15	h=755	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=320	y=773	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=588	y=773	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#               Script Runner                  #
+#                                              #
+################################################
+
+################################################
+# EM_Script_Runner Title Lines
+
+text x=150 y=10 value="Script Runner" fontsize=12 align=center
+text x=454 y=10 value="Script Runner" fontsize=12 align=center
+clickarea	x=36	y=11	h=12 w=190 preview=false onclick="(konsole --hold -e /bin/bash -c 'cd $HOME/.superkaramba/EasyMonitor/themes/scripts/; ls --color; Command () { while :; do read -e -p $(pwd )\>\  line;history -s ${line};${line}; done;}; Command')"
+clickarea	x=36	y=11	h=12 w=190 preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/themes/scripts/"
+
+image		x=18	y=8	path="icons/default/info_2.png"
+clickarea	x=18	y=8	w=16	h=16	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/kate_info_man.sh kdialog"
+
+image		x=222	y=8	path="icons/default/knemo-monitor-idle.png"
+clickarea	x=222	y=8	w=16	h=16	preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/chroot.dev.sh"
+
+image		x=238	y=8	path="icons/default/jump-for-stuff.png"
+clickarea	x=238	y=8	w=16	h=16	preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/jump-for-stuff.sh"
+
+image		x=254	y=8	path="icons/default/script_edit.png"
+clickarea	x=254	y=8	h=12 w=12 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/jump-for-stuff.sh; exit 0"
+
+clickarea	x=322	y=11	h=12 w=215 preview=false onclick="konsole --hold -e sudo lsblk -l -p -a --output NAME,LABEL,FSTYPE,SIZE,TYPE,TRAN"
+
+image		x=270	y=8	path="icons/default/script_edit.png"
+clickarea	x=270	y=8	h=12 w=12 preview=false sensor=program onclick="xdg-open 'http://distrowatch.com/search.php?category=Live+Medium';sleep 5; xdg-open 'http://distrowatch.com/'"; exit 0"
+
+image		x=574	y=8	path="icons/default/script_edit.png"
+clickarea	x=574	y=8	h=12 w=12 preview=false sensor=program onclick="xdg-open 'http://distrowatch.com/search.php?category=Live+Medium';sleep 5; xdg-open 'http://distrowatch.com/'"; exit 0"
+################################################
+# Tips & Test Tricks
+text	  x=20	y=34 value="Tips & Test Tricks" align=left
+text	  x=205	y=34 value="Configure script" align=left
+clickarea x=200 y=32  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/top_info.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/Powiedz_wiersz_lokomotywa.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/EM_New_Tips_Test_Tricks.sh; exit 0"
+image	  x=16	y=30 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18  y=32 w=180 h=14 preview=false sensor=program onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/Powiedz_wiersz_lokomotywa.sh"
+
+# Arch Install
+text	  x=20	y=54 value="Install Arch Linux into a partition or usb" align=left
+text	  x=205	y=54 value="Configure script" align=left
+clickarea x=200 y=52  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_arch_install.sh; exit 0"
+image	  x=16	y=50 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18  y=52 w=180 h=14 preview=true sensor=program onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_arch_install.sh"
+
+# Arch based linux series iso
+text	  x=20	y=74 value="Arch based linux series iso" align=left
+text	  x=205	y=74 value="Configure script" align=left
+clickarea x=200	y=72 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_arch_based_linux.sh; exit 0"
+image	  x=16	y=70 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	y=72 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_arch_based_linux.sh"
+
+# Chakra series iso
+text x=20 y=94 value="Chakra series iso" align=left
+text x=205 y=94 value="Configure script" align=left
+clickarea x=200 y=92  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_chakra.sh; exit 0"
+image x=16 y=90 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18 y=92  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_chakra.sh"
+
+# KaOS series iso
+text x=20 y=114 value="KaOS series iso" align=left
+text x=205 y=114 value="Configure script" align=left
+clickarea x=200 y=112  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_kaos.sh; exit 0"
+image x=16 y=110 path="backrounds/areo/backtittle_white.png"
+clickarea x=18 y=112  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_kaos.sh"
+
+# Mageia series iso
+text x=20 y=134 value="Mageia series iso" align=left
+text x=205 y=134 value="Configure script" align=left
+clickarea x=200 y=132  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_mageia.sh; exit 0"
+image x=16 y=130 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18 y=132  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_mageia.sh"
+
+# Open MandrivaLx series iso
+text x=20 y=154 value="Open MandrivaLx series iso" align=left
+text x=205 y=154 value="Configure script" align=left
+clickarea x=200 y=152  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_openmandriva.sh; exit 0"
+image x=16 y=150 path="backrounds/areo/backtittle_red.png"
+clickarea x=18 y=152  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_openmandriva.sh"
+
+# Open Suse series iso
+text x=20 y=174 value="Open Suse series iso" align=left
+text x=205 y=174 value="Configure script" align=left
+clickarea x=200 y=172  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_opensuse.sh; exit 0"
+image x=16 y=170 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18 y=172  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_opensuse.sh"
+
+# Sparky Linux series iso
+text x=20 y=194 value="Sparky series iso" align=left
+text x=205 y=194 value="Configure script" align=left
+clickarea x=200 y=192  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_sparky_linux.sh"; exit 0"
+image x=16 y=190 path="backrounds/areo/backtittle_red.png"
+clickarea x=18 y=192  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_sparky_linux.sh"
+
+# 4MLinux series iso
+text x=20 y=214 value="4MLinux series of iso" align=left
+text x=205 y=214 value="Configure script" align=left
+clickarea x=200 y=212  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_4mlinux.sh; exit 0"
+image x=16 y=210 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18 y=212  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_4mlinux.sh"
+
+# Ubuntu & based series iso
+text	  x=20	y=234 value="Ubuntu & based series iso" align=left
+text	  x=205	y=234 value="Configure script" align=left
+clickarea x=200	y=232 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_ubuntu.sh; exit 0"
+image	  x=16	y=230 path="backrounds/areo/backtittle_red.png"
+clickarea x=18	y=232 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_ubuntu.sh"
+
+# Mint series series iso
+text	  x=20	y=254 value="Mint series iso" align=left
+text	  x=205	y=254 value="Configure script" align=left
+clickarea x=200	y=252 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_mint.sh; exit 0"
+image	  x=16	y=250 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	y=252 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_mint.sh"
+
+# Deepin series iso
+text	  x=20	y=274 value="Deepin series iso" align=left
+text	  x=205	y=274 value="Configure script" align=left
+clickarea x=200	y=272 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_instal_distro.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_deepin.sh; exit 0"
+image	  x=16	y=270 path="backrounds/areo/backtittle_red.png"
+clickarea x=18	y=272 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_deepin.sh"
+
+# AntiX MX-16 iso
+text	  x=20	y=294 value="AntiX & MX series iso" align=left
+text	  x=205	y=294 value="Configure script" align=left
+clickarea x=200	y=292 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_antix.sh; exit 0"
+image	  x=16	y=290 path="backrounds/areo/backtittle_white.png"
+clickarea x=18	y=292 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_antix.sh"
+
+# Slitaz & Nanolinux iso
+text	  x=20	y=314 value="Slitaz Nano AnitaOS4 GParted NimbleX,..." align=left
+text	  x=205	y=314 value="Configure script" align=left
+clickarea x=200	y=312 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_slitaz_nanolinux.sh; exit 0"
+image	  x=16	y=310 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	y=312 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_slitaz_nanolinux.sh"
+
+# Sabayon iso
+text	  x=20	y=334 value="Sabayon Leatest iso" align=left
+text	  x=205	y=334 value="Configure script" align=left
+clickarea x=200	y=332 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_sabayon.sh; exit 0"
+image	  x=16	y=330 path="backrounds/areo/backtittle_white.png"
+clickarea x=18	y=332 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_sabayon.sh"
+
+# Gentoo iso
+text	  x=20	  y=354 value="Gentoo Live Linux " align=left
+text	  x=205	  y=354 value="Configure script" align=left
+clickarea x=200	  y=352  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_gentoo.sh; exit 0"
+image	  x=16	  y=350 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18	  y=352  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_gentoo.sh"
+
+# Install Funtoo
+text	  x=20	  y=374 value="Install Funtoo Linux into a partition" align=left
+text	  x=205	  y=374 value="Configure script" align=left
+clickarea x=200	  y=372  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_funtoo_install.sh; exit 0"
+image	  x=16	  y=370 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18	  y=372  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_funtoo_install.sh"
+
+# Redcore iso
+text	  x=20	  y=394 value="Redcore iso" align=left
+text	  x=205	  y=394 value="Configure script" align=left
+clickarea x=200	  y=392 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_redcore.sh; exit 0"
+image	  x=16	  y=390 path="backrounds/areo/backtittle_red.png"
+clickarea x=18	  y=392 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_redcore.sh"
+
+
+# CentOS iso
+text	  x=20	  y=414 value="CentOS iso" align=left
+text	  x=205	  y=414 value="Configure script" align=left
+clickarea x=200	  y=412  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_centos.sh; exit 0"
+image	  x=16	  y=410 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	  y=412  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_centos.sh"
+
+# Korora iso
+text	  x=20	  y=434 value="Korora iso" align=left
+text	  x=205	  y=434 value="Configure script" align=left
+clickarea x=200	  y=432  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_korora.sh; exit 0"
+image	  x=16	  y=430 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18	  y=432  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_korora.sh"
+
+# Fedora iso
+text	  x=20	  y=454 value="Fedora iso" align=left
+text	  x=205	  y=454 value="Configure script" align=left
+clickarea x=200	  y=452  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_fedora.sh; exit 0"
+image	  x=16	  y=450 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	  y=452  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_fedora.sh"
+
+# Porteus iso
+text	  x=20	  y=474 value="Porteus iso" align=left
+text	  x=205	  y=474 value="Configure script" align=left
+clickarea x=200	  y=472  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_porteus.sh; exit 0"
+image	  x=16	  y=470 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	  y=472  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_porteus.sh"
+
+# Install Puppy iso
+text	  x=20	  y=494 value="Puppy slacko iso" align=left
+text	  x=205	  y=494 value="Configure script" align=left
+clickarea x=200	  y=492  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_puppy.sh; exit 0"
+image	  x=16	  y=490 path="backrounds/areo/backtittle_red.png"
+clickarea x=18	  y=492  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_puppy.sh"
+
+# Zenwalk iso
+text	  x=20	  y=514 value="Zenwalk iso" align=left
+text	  x=205	  y=514 value="Configure script" align=left
+clickarea x=200	  y=512  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_zenwalk.sh; exit 0"
+image	  x=16	  y=510 path="backrounds/areo/backtittle_white.png"
+clickarea x=18	  y=512  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_zenwalk.sh"
+
+# Slackware64 iso
+text	  x=20	  y=534 value="Slackware64 iso" align=left
+text	  x=205	  y=534 value="Configure script" align=left
+clickarea x=200	  y=532  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_slackware.sh; exit 0"
+image	  x=16	  y=530 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18	  y=532  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_slackware.sh"
+
+# Slax iso
+text	  x=20	  y=554 value="Slax iso" align=left
+text	  x=205	  y=554 value="Configure script" align=left
+clickarea x=200	  y=552   w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_slax.sh; exit 0"
+image	  x=16	  y=550 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	  y=552   w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_slax.sh"
+
+# Austrumi iso
+text	  x=20	  y=574 value="Austrumi iso" align=left
+text	  x=205	  y=574 value="Configure script" align=left
+clickarea x=200	  y=572 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_austrumi.sh; exit 0"
+image	  x=16	  y=570 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18	  y=572 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_austrumi.sh"
+
+# Ex Linux series iso
+text	  x=20	  y=594 value="Ex Linux series iso" align=left
+text	  x=205	  y=594 value="Configure script" align=left
+clickarea x=200	  y=592  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_extix.sh; exit 0"
+image	  x=16	  y=590 path="backrounds/areo/backtittle_white.png"
+clickarea x=18	  y=592  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_extix.sh"
+
+# Debian & live & based iso
+text	  x=20	  y=614 value="Debian & live & based iso" align=left
+text	  x=205	  y=614 value="Configure script" align=left
+clickarea x=200	  y=612  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_debian.sh; exit 0"
+image	  x=16	  y=610 path="backrounds/areo/backtittle_red.png"
+clickarea x=18	  y=612  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_debian.sh"
+
+# Siduction series live iso
+text	  x=20	  y=634 value="Siduction 17 series live iso" align=left
+text	  x=205	  y=634 value="Configure script" align=left
+clickarea x=200	  y=632  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_siduction.sh; exit 0"
+image	  x=16	  y=630 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18	  y=632  w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_siduction.sh"
+
+# Debian harrdisk boot image install
+text	  x=20	  y=654 value="Install Debian-8.6.0-i386-netinst.iso" align=left
+text	  x=205	  y=654 value="Configure script" align=left
+clickarea x=200	  y=652  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_debian.sh; exit 0"
+image	  x=16	  y=650 path="backrounds/areo/backtittle_red.png"
+clickarea x=18	  y=652  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_debian.sh"
+
+# Netrunner iso
+text	  x=20	  y=674 value="Netrunner iso" align=left
+text	  x=205	  y=674 value="Configure script" align=left
+clickarea x=200	  y=672  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_netrunner.sh; exit 0"
+image	  x=16	  y=670 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18	  y=672  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_netrunner.sh"
+
+# Solus Budgie iso
+text	  x=20	  y=694 value="Solus iso" align=left
+text	  x=205	  y=694 value="Configure script" align=left
+clickarea x=200	  y=692  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_solus.sh; exit 0"
+image	  x=16	  y=690 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18	  y=692  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_solus.sh"
+
+# Kodachi iso
+text	  x=20	  y=714 value="Kodachi iso" align=left
+text	  x=205	  y=714 value="Configure script" align=left
+clickarea x=200	  y=712  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_kodachi.sh; exit 0"
+image	  x=16	  y=710 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18	  y=712  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_kodachi.sh"
+
+# Q4os iso
+text	  x=20	  y=734 value="Q4os iso" align=left
+text	  x=205	  y=734 value="Configure script" align=left
+clickarea x=200	  y=732  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_q4os.sh; exit 0"
+image	  x=16	  y=730 path="backrounds/areo/backtittle_white.png"
+clickarea x=18	  y=732  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_q4os.sh"
+
+# NuTyX series iso
+text	  x=20	  y=754 value="NuTyX series iso" align=left
+text	  x=205	  y=754 value="Configure script" align=left
+clickarea x=200	  y=752  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_nutyx.sh; exit 0"
+image	  x=16	  y=750 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18	  y=752  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_nutyx.sh"
+
+################################################
+
+# Test Script
+text	  x=324	  y=34 value="New Test Script" align=left
+text	  x=509	  y=34 value="Configure script" align=left
+clickarea x=504	  y=32  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/EM_New_Test_Script.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/new_instal_distro.sh; exit 0"
+image	  x=320	  y=30 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=32 w=180 h=14 preview=true sensor=program onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/EM_New_Test_Script.sh"
+
+# Vinux iso
+text	  x=324	  y=54 value="Vinux iso" align=left
+text	  x=509	  y=54 value="Configure script" align=left
+clickarea x=504	  y=52  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_vinux.sh; exit 0"
+image	  x=320	  y=50 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=322	  y=52  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_vinux.sh"
+
+# Robolinux iso
+text	  x=324	  y=74 value="Robolinux iso" align=left
+text	  x=509	  y=74 value="Configure script" align=left
+clickarea x=504	  y=72  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_robolinux.sh; exit 0"
+image	  x=320	  y=70 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=72  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_robolinux.sh"
+
+# Rancher os iso
+text	  x=324	  y=94 value="Rancher os iso" align=left
+text	  x=509	  y=94 value="Configure script" align=left
+clickarea x=504	  y=92  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_rancher-os.sh; exit 0"
+image	  x=320	  y=90 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=92  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_rancher-os.sh"
+
+# BlankOn iso
+text	  x=324	  y=114 value="BlankOn iso" align=left
+text	  x=509	  y=114 value="Configure script" align=left
+clickarea x=504	  y=112 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_blankon.sh; exit 0"
+image	  x=320	  y=110 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=112 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_blankon.sh"
+
+# OpenELEC tar
+text	  x=324	  y=134 value="OpenELEC tar" align=left
+text	  x=509	  y=134 value="Configure script" align=left
+clickarea x=504	  y=132 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_openelec.sh; exit 0"
+image	  x=320	  y=130 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=132 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_openelec.sh"
+
+# GoboLinux
+text	  x=324	  y=154 value="GoboLinux iso" align=left
+text	  x=509	  y=154 value="Configure script" align=left
+clickarea x=504	  y=152 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_gobo.sh; exit 0"
+image	  x=320	  y=150 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=152 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_gobo.sh"
+
+# Grml iso
+text	  x=324	  y=174 value="Grml iso" align=left
+text	  x=509	  y=174 value="Configure script" align=left
+clickarea x=504	  y=172  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_grml.sh; exit 0"
+image	  x=320	  y=170 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=172  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_grml.sh"
+
+# Install Android
+text	  x=324	  y=194 value="Install Android Linux into a folder" align=left
+text	  x=509	  y=194 value="Configure script" align=left
+clickarea x=504	  y=192  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_android.sh; exit 0"
+image	  x=320	  y=190 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=322	  y=192  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_android.sh"
+
+# Pardus Topluluk iso
+text	  x=324	  y=214 value="Pardus Topluluk iso" align=left
+text	  x=509	  y=214 value="Configure script" align=left
+clickarea x=504	  y=212  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_pardus.sh; exit 0"
+image	  x=320	  y=210 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=212  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_pardus.sh"
+
+# Aapodio iso
+text	  x=324	  y=234 value="Aapodio iso" align=left
+text	  x=509	  y=234 value="Configure script" align=left
+clickarea x=504	  y=232  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_apodio.sh; exit 0"
+image	  x=320	  y=230 path="backrounds/areo/backtittle_white.png"
+clickarea x=322	  y=232  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_apodio.sh"
+
+# Peppermint iso
+text	  x=324	  y=254 value="Peppermint iso" align=left
+text	  x=509	  y=254 value="Configure script" align=left
+clickarea x=504	  y=252  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_peppermint.sh; exit 0"
+image	  x=320	  y=250 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=252  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_peppermint.sh"
+
+# Tails iso
+text	  x=324	  y=274 value="Tails iso" align=left
+text	  x=509	  y=274 value="Configure script" align=left
+clickarea x=504	  y=272  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_tails.sh; exit 0"
+image	  x=320	  y=270 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=322	  y=272  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_tails.sh"
+
+# SolydXk iso
+text	  x=324	  y=294 value="SolydXk iso" align=left
+text	  x=509	  y=294 value="Configure script" align=left
+clickarea x=504	  y=292  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_solyd.sh; exit 0"
+image	  x=320	  y=290 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=292  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_solyd.sh"
+
+# Quirky iso
+text	  x=324	  y=314 value="Quirky iso" align=left
+text	  x=509	  y=314 value="Configure script" align=left
+clickarea x=504	  y=312  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_quirky.sh; exit 0"
+image	  x=320	  y=310 path="backrounds/areo/backtittle_white.png"
+clickarea x=322	  y=312  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_quirky.sh"
+
+# Open Indiana iso
+text	  x=324	  y=334 value="Open Indiana iso" align=left
+text	  x=509	  y=334 value="Configure script" align=left
+clickarea x=504	  y=332  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_openindiana.sh; exit 0"
+image	  x=320	  y=330 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=332  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_openindiana.sh"
+
+# Tiny CorePlus iso
+text	  x=324	  y=354 value="Tiny CorePlus iso" align=left
+text	  x=509	  y=354 value="Configure script" align=left
+clickarea x=504	  y=352  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_tiny_core.sh; exit 0"
+image	  x=320	  y=350 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=352  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_tiny_core.sh"
+
+# Crux iso
+text	  x=324	  y=374 value="Crux iso" align=left
+text	  x=509	  y=374 value="Configure script" align=left
+clickarea x=504	  y=372  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_crux.sh; exit 0"
+image	  x=320	  y=370 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=372  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_crux.sh"
+
+# Parsix iso
+text	  x=324	  y=394 value="Parsix iso" align=left
+text	  x=509	  y=394 value="Configure script" align=left
+clickarea x=504	  y=392  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_parsix.sh; exit 0"
+image	  x=320	  y=390 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=322	  y=392  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_parsix.sh"
+
+# Bodhi iso
+text	  x=324	  y=414 value="Bodhi iso" align=left
+text	  x=509	  y=414 value="Configure script" align=left
+clickarea x=504	  y=412  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_bodhi.sh; exit 0"
+image	  x=320	  y=410 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=412  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_bodhi.sh"
+
+# Maui iso
+text	  x=324	  y=434 value="Maui iso" align=left
+text	  x=509	  y=434 value="Configure script" align=left
+clickarea x=504	  y=432  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_maui.sh; exit 0"
+image	  x=320	  y=430 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=432  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_maui.sh"
+
+# Scientific Linux iso
+text	  x=324	  y=454 value="Scientific Linux iso" align=left
+text	  x=509	  y=454 value="Configure script" align=left
+clickarea x=504	  y=452 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_scientific.sh; exit 0"
+image	  x=320	  y=450 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=452 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_scientific.sh"
+
+# Calculate Linux iso
+text	  x=324	  y=474 value="Calculate Linux iso" align=left
+text	  x=509	  y=474 value="Configure script" align=left
+clickarea x=504	  y=472  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_calculate.sh; exit 0"
+image	  x=320	  y=470 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=472  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_calculate.sh"
+
+# Oracle iso
+text	  x=324	  y=494 value="Oracle Linux iso" align=left
+text	  x=509	  y=494 value="Configure script" align=left
+clickarea x=504	  y=492  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_instal_distro.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_oracle_linux.sh; exit 0"
+image	  x=320	  y=490 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=492  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_oracle_linux.sh"
+
+# Elive series of live iso
+text	  x=324	  y=514 value="Elive series of live iso" align=left
+text	  x=509	  y=514 value="Configure script" align=left
+clickarea x=504	  y=512 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_elive.sh; exit 0"
+image	  x=320	  y=510 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=512 w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_elive.sh"
+
+# KNOPPIX iso
+text	  x=324	  y=534 value="KNOPPIX iso" align=left
+text	  x=509	  y=534 value="Configure script" align=left
+clickarea x=504	  y=532 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_knoppix.sh; exit 0"
+image	  x=320	  y=530 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=322	  y=532 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_knoppix.sh"
+
+# Pclinuxos64 iso
+text	  x=324	  y=554 value="Pclinuxos64 iso" align=left
+text	  x=509	  y=554 value="Configure script" align=left
+clickarea x=504	  y=552 w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_pclinuxos64.sh; exit 0"
+image	  x=320	  y=550 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=552 w=180 h=14 preview=true onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_pclinuxos64.sh"
+
+# SharkOS iso
+text	  x=324	  y=574 value="SharkOS iso" align=left
+text	  x=509	  y=574 value="Configure script" align=left
+clickarea x=504	  y=572  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_shark.sh; exit 0"
+image	  x=320	  y=570 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=572  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_shark.sh"
+
+# Greenie iso
+text	  x=324	  y=594 value="Greenie iso" align=left
+text	  x=509	  y=594 value="Configure script" align=left
+clickarea x=504	  y=592  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_greenie.sh; exit 0"
+image	  x=320	  y=590 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=592  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_greenie.sh"
+
+# Frugalware iso
+text	  x=324	  y=614 value="Frugalware iso" align=left
+text	  x=509	  y=614 value="Configure script" align=left
+clickarea x=504	  y=612  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_frugalware.sh; exit 0"
+image	  x=320	  y=610 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=612  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_frugalware.sh"
+
+# Rebellin iso
+text	  x=324	  y=634 value="Rebellin iso" align=left
+text	  x=509	  y=634 value="Configure script" align=left
+clickarea x=504	  y=632  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_rebellin.sh; exit 0"
+image	  x=320	  y=630 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=322	  y=632  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_rebellin.sh"
+
+# NixOS iso
+text	  x=324	  y=654 value="NixOS iso" align=left
+text	  x=509	  y=654 value="Configure script" align=left
+clickarea x=504	  y=652  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_nixos.sh; exit 0"
+image	  x=320	  y=650 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=652  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_nixos.sh"
+
+# Runtu iso
+text	  x=324	  y=674 value="Runtu iso" align=left
+text	  x=509	  y=674 value="Configure script" align=left
+clickarea x=504	  y=672  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_runtu.sh; exit 0"
+image	  x=320	  y=670 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=672  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_runtu.sh"
+
+# Install ROSA live iso
+text	  x=324	  y=694 value="ROSA iso" align=left
+text	  x=509	  y=694 value="Configure script" align=left
+clickarea x=504	  y=692  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_rosa.sh; exit 0"
+image	  x=320	  y=690 path="backrounds/areo/backtittle_white.png"
+clickarea x=322	  y=692  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_rosa.sh"
+
+# Void iso
+text	  x=324	  y=714 value="Void iso" align=left
+text	  x=509	  y=714 value="Configure script" align=left
+clickarea x=504	  y=712  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_void.sh; exit 0"
+image	  x=320	  y=710 path="backrounds/areo/backtittle_grin.png"
+clickarea x=322	  y=712  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_void.sh"
+
+# Install ALT live iso
+text	  x=324	  y=734 value="Install ALT live iso" align=left
+text	  x=509	  y=734 value="Configure script" align=left
+clickarea x=504	  y=732  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_altlinux.sh; exit 0"
+image	  x=320	  y=730 path="backrounds/areo/backtittle_blue.png"
+clickarea x=322	  y=732  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_altlinux.sh"
+
+# Install Dark Colors Grub menu theme
+text	  x=324	  y=754 value="Install Dark Colors Grub menu theme" align=left
+text	  x=509	  y=754 value="Configure script" align=left
+clickarea x=504	  y=752  w=80 h=14 preview=true onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_dark_colors_grub_theme.sh; exit 0"
+image	  x=320	  y=750 path="backrounds/areo/backtittle_red.png"
+clickarea x=322	  y=752  w=180 h=14 preview=true onclick="konsole --hold -e sudo /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/new_install_dark_colors_grub_theme.sh"
+
+
+################################################
+
+</GROUP> =

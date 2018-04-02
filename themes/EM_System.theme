@@ -1,0 +1,108 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_System.theme Super Karamba theme
+################################################
+#                                              #
+#      Single Theme System                     #
+#                                              #
+################################################
+
+<GROUP>	X=0	Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=120	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_System.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=90	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=105	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=90	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=105	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=105	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+###############################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#               System                         #
+#                                              #
+################################################
+
+###############################################
+
+# Title Lines / User Machine Lines
+text	x=20	y=10	fontsize=12	value="User/Machine:"
+text	x=105	y=10	fontsize=12	sensor=program program="echo ${USER}@`hostname`|cut -c -26"	interval=3600000
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/os_info.sh"
+
+# Distro Lines
+text	x=60	y=27	fontsize=10	value="Distro"
+text	x=110	y=27	fontsize=10	value=":"
+text	x=120	y=27	fontsize=9	sensor=program program="sh $HOME/.superkaramba/EasyMonitor/themes/scripts/os.sh| cut -c -36; exit 0" interval=3600000
+
+# Users Lines
+text	x=60	y=37	value="Users"
+text	x=110	y=37	value=":"
+text	x=120	y=37	sensor=program	program="who -q |sed -e '1d' |awk  -F= '{print $2}'"	interval=60000
+text	x=130	y=37	value=":"
+text	x=139	y=37	sensor=program	program="users |cut -c -25"				interval=60000
+
+# Date/Time Lines
+text	x=60	y=47	value="Date/Time"
+text	x=110	y=47	value=":"
+text	x=120	y=47	sensor=time format="ddd dd.MM.yyyy  /  hh:mm:ss" interval=1000
+
+# UpTime Lines
+text	x=60	y=57	value="Uptime"
+text	x=110	y=57	value=":"
+text	x=120	y=57	sensor=uptime format="%d day(s) %H h %M m" interval=60000
+
+# Kernel Lines
+text	x=60	y=67	value="Kernel"
+text	x=110	y=67	value=":"
+text	x=120	y=67	sensor=program program="uname -rmo |cut -c -36" interval=3600000
+
+# KDE and QT version Lines
+text	x=60	y=77	value="KDE/QT"
+text	x=110	y=77	value=":"
+text	x=120	y=77	sensor=program program="if [ $(which kde4-config) ]; then kde4-config --version | grep KDE | awk '{print $1, $2}'; else kde-config --version | grep KDE | awk '{print $1, $2}'; fi " interval=3600000
+text	x=220	y=77	sensor=program program="if [ $(which kde4-config) ]; then kde4-config --version | grep Qt | awk '{print $1, $2}'; else kde-config --version | grep Qt | awk '{print $1, $2}'; fi" interval=3600000
+
+###############################################
+# Click-areas
+
+image		x=270	y=5 path="icons/default/info.png"
+clickarea	x=270	y=5 h=20 w=15 preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_About.theme; exit 0"
+
+image		x=20	y=35 path="icons/default/system.png"
+clickarea	x=20	y=35 h=40 w=40 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/hardware_info.sh; exit 0"
+
+image		x=270	y=75 path="icons/default/script_edit.png"
+clickarea	x=270	y=75 h=12 w=12 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/os_info.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/os.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/hardware_info.sh; exit 0"
+
+image		x=270	y=40 path="icons/default/hw_info.png"
+clickarea	x=270	y=40 h=12 w=12 preview=false onclick="kinfocenter"
+
+image		x=270	y=60 path="icons/default/terminals.png"
+clickarea	x=270	y=60 h=12 w=12 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/color_info.sh"
+
+################################################
+</GROUP> =

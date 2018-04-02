@@ -1,0 +1,61 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Netstat_UDP.theme Super Karamba theme
+################################################
+#                                              #
+#  Single Theme netstat UDP                    #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba x=0 y=0 w=600 h=205 locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_600_alfa_00.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84x600_alfa_55.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue_568.png"
+
+image x=0	y=102	path="backrounds/areo/midle_bg_84x600_alfa_55.png"
+image x=0	y=186	path="backrounds/areo/bottom_bar_600_alfa_00.png"
+
+
+################################################
+# Click-areas
+
+clickarea x=16 y=0 h=15 w=565 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Netstat_UDP.theme; exit 0"
+
+clickarea x=0 y=0 h=200 w=10 preview=false onclick="xdg-open $HOME"
+
+clickarea x=16 y=190 h=15 w=565 preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+
+clickarea x=584 y=0 h=200 w=10 preview=false onclick="superkaramba"
+
+###############################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#               netstat UDP                    #
+#                                              #
+################################################
+
+
+###############################################
+# Title Lines
+
+defaultfont font="monospace" fontsize=10 color=220,220,220 shadow=1 bgcolor=0,0,0
+
+text x=300 y=10 align=center fontsize=12 value="netstat -lup | grep 'udp' | head -n11 interval=10000"
+
+text x=18 y=35 font="monospace" fontsize=8 sensor=program program="netstat -lup | grep 'udp' | head -n11" interval=10000
+
+</GROUP> =

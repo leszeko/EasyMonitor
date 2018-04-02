@@ -1,0 +1,457 @@
+# install.txt
+
+1. Easy Monitor Installation:
+=============================
+
+package will be instaled in
+~/.superkaramba/EasyMonitor/
+
+# * Download new version EasyMonitor.skz and unzip archive to empty "EasyMonitor_install" folder
+# From konsole inside "EasyMonitor_install" folder run script /bin/bash ./install_easy_monitor.sh
+
+#------------------------------------------------#
+# plasmapkg --type=superkaramba -i Theme_Name.skz
+
+Can't find superkaramba package. Try install it manually !
+
+Superkaramba is considered to be "legacy" and some new distros don't provide it in standard repos
+So you have to look for it on your own.
+
+Example:
+https://software.opensuse.org/package/superkaramba
+https://www.rpmfind.net/linux/rpm2html/search.php?query=superkaramba&submit=Search+...
+http://rpm.pbone.net/index.php3/stat/2/simple/2
+http://archive.archlinux.org/packages/k/kdeutils-superkaramba/
+http://packages.linuxmint.com/search.php?release=any&section=any&keyword=superkaramba
+http://ftp.de.debian.org/debian/pool/main/s/superkaramba/
+https://packages.debian.org/unstable/kde/plasma-scriptengine-superkaramba
+#deb http://ftp.de.debian.org/debian jessie main
+
+KDE 3.X Improving the eyecandy of KDE 3.X superkaramba-trinity program based on karamba
+https://pkgs.org/download/superkaramba-trinity
+For old versions of konsole program in all scripts replace "konsole --hold" on "konsole --noclose"
+
+KDE 4.X Put Karamba applets to the desktop with Python
+https://pkgs.org/download/superkaramba
+
+SuperKaramba theme support for the Plasma Workspaces
+https://pkgs.org/download/plasma-scriptengine-superkaramba
+
+Example: Upgrade (or install, query) package files directly from the internet
+sudo rpm -U http://mirrors.vbi.vt.edu/mirrors/linux/opensuse/discontinued/update/13.2/i586/superkaramba-4.14.3-4.2.i586.rpm
+sudo rpm -U http://mirrors.vbi.vt.edu/mirrors/linux/opensuse/discontinued/update/13.2/i586/superkaramba-14.12.3-16.1.i586.rpm
+
+For example: superkaramba-15.08.3-1.1.x86_64.rpm package works on Sabayon.
+After downloading a package that seems to be match for your system,
+you can try simply unpack package and even copy files/folders
+from unpack archive as them belong into your file system as root.
+Then run superkaramba from konsole and look for missing dependencies..
+Missing libs can be in different tree - lib - lib64.
+( probably you will need libknewstuff2 libqimageblitz )
+Or if you want to install it from the source package
+https://store.kde.org/content/show.php/SuperKaramba?content=23258
+https://techbase.kde.org/Projects/SuperKaramba/FAQ
+
+#------------------------------------------------#
+# * Of course your user have to be allowed to use sudo command, for exaple belong to: sudo users admin wheel.. group.
+# and group have to be allowed to use sudo command
+
+Example:
+# Create file /etc/sudoers.d/01wheel to enable members of wheel group to access root via sudo, if it is not defined in /etc/sudoers file
+# (copy & paste to konsole)
+"
+su
+"
+echo "%wheel ALL=(ALL)  ALL" > /etc/sudoers.d/01wheel
+chmod 440 /etc/sudoers.d/01wheel
+"
+# end copy & paste
+# Edit /etc/group and update the entry for wheel by adding the names of the users as a comma delimited list on the entry for wheel.
+# In the following example, we will add users: ken and dennis to the wheel group.
+# Change: - wheel:x:10:
+# To:     - wheel:x:10:$you_user_login,ken,dennis
+https://wiki.mageia.org/en/Configuring_sudo
+
+# In some new instalations you need also to give a password for root - "passwd root".
+# or sudo su & passwd
+# If not:
+https://wiki.archlinux.org/index.php/Users_and_groups
+https://wiki.debian.org/SystemGroups
+https://help.ubuntu.com/community/RootSudo
+
+# Exaple: for Debian,..: (adduser $you_user_login sudo,users,wheel)
+"
+you_user_login=`whoami` ;  echo "You are $you_user_login And belong" ; whoami | groups
+echo "Give root paswoord if you need:  add $you_user_login to sudo group and $you_user_login to users or Enter for skip"
+su -c "adduser $you_user_login sudo; adduser $you_user_login users ; adduser $you_user_login wheel" root
+"
+
+# Exaple: for Arch, OpenSUSE,..: (usermod -G sudo,users,wheel $you_user_login)
+"
+you_user_login=`whoami` ;  echo "You are $you_user_login And belong" ; whoami | groups
+echo "Give root paswoord if you need:  add $you_user_login to sudo group and $you_user_login to users or Enter for skip"
+su -c "usermod -G sudo $you_user_login; usermod -G users $you_user_login;usermod -G wheel $you_user_login" root
+"
+
+# * Logout from KDE and login again.
+
+#####
+# Or
+
+# First download and install SuperKaramba.
+
+#------------------------------------------------#
+# * For Ubuntu:
+"
+sudo apt-get install plasma-scriptengine-superkaramba
+"
+# Or
+"
+sudo apt-get install superkaramba
+sudo apt-get install kde-utils-superkaramba
+"
+#------------------------------------------------#
+# * For Arch:
+"
+sudo pacman -Syu --needed kdeutils-superkaramba
+"
+#------------------------------------------------#
+# Run it and download EasyMonitor by -> Get new themes ( but often older version).
+
+####################
+* For work all features you have to also install:
+# lsb or lsb-release or redhat-lsb, dolphin or konqueror, sensors or lm-sensors or lm_sensors, konsole, dmidecode, mesa-demos or mesa-demos-x
+# kate, iproute2, net-tools, ethtool, netstat-nat, wget, acpi, hddtemp, hdparm, partitionmanager or kde-partitionmanager, gcc, nmap, kde-systemsettings
+# sane or sane-utils or sane-backends, imagemagick, kim or kim4, bc, kdesu or ksudo...
+# and modify some sudoers rights...
+
+# Example:
+
+# * For Ubuntu, Debian, Deepin:
+"
+sudo apt-get install plasma-scriptengine-superkaramba superkaramba lsb acpi lm_sensors sensors hddtemp hdparm ethtool nmap kde-systemsettings sane-utils sane-backends wget dmidecode bc gcc
+"
+
+# * For OpenSuse:
+"
+sudo /sbin/yast2 --install lsb acpi sensors hddtemp hdparm ethtool nmap sane-backends wget dmidecode kate konqueror mesa-demos-x bc gcc
+"
+
+# * or
+"
+sudo /usr/bin/zypper install -R superkaramba konsole kate kwrite lsb-release net-tools ethtool acpi wget nmap sensors hddtemp hdparm partitionmanager konqueror kinfocenter dmidecode mesa-demo-x sane-backends bc gcc
+"
+
+# * For Mandriva
+"
+sudo urpmi superkaramba kate acpi lm_sensors hddtemp hdparm nmap partitionmanager konsole netstat-nat konqueror kinfocenter ethtool lsb-release net-tools sane imagemagick kim wget dmidecode bc gcc
+"
+
+# * For Arch, Manjaro
+"
+sudo pacman -Syu --needed kdeutils-superkaramba kate lsb-release net-tools nmap ethtool konsole netstat-nat acpi hddtemp hdparm lm_sensors sane imagemagick kim4 wget dmidecode bc gcc
+"
+
+# * For Fedora:
+"
+sudo yum install kdeutils-superkaramba konsole kate redhat-lsb net-tools ethtool acpi wget nmap kde-partitionmanager lm_sensors hddtemp hdparm sane ImageMagick wget dmidecode bc gcc
+"
+
+# * Sabayon
+"
+sudo equo install superkaramba lsb-release konsole kate hddtemp hdparm acpi lm_sensors nmap partitionmanager netstat-nat ethtool net-tools sane-backends imagemagick wget dmidecode bc gcc
+"
+
+# * Vector
+"
+su -c "slapt-get --install superkaramba konsole kate hdparm lm_sensors nmap ethtool net-tools sane acpid imagemagick wget dmidecode bc gcc; exit"
+"
+
+#------------------------------------------------#
+# The lm_sensors package have to be configured.
+
+# For example:
+"
+sudo sensors-detect
+"
+# and detected modules loaded.
+
+# For example: Load
+"
+sudo modprobe coretemp
+"
+# or
+"
+sudo /etc/init.d/lm_sensors start
+"
+
+# Check out
+"
+sudo sensors coretemp-*	#( Intel thermal sensors... driver module)
+"
+# * or Load
+"
+sudo modprobe k8temp
+"
+
+# Check out
+"
+sudo sensors k8temp-*	#( AMD K8 thermal sensors... driver module)
+"
+####
+# For start sensors monitoring at boot time, add lm_sensors to your start sequence in way dependent on your installed distribution
+# Example:
+
+# * For OpenSuse:
+# run yast2 and configure sensors to start at boot process
+
+# * For Gentoo
+"
+sudo rc-update add lm_sensors default
+"
+
+# * For Arch
+
+# *System V init - Linux startup process 
+# Edit file  /etc/rc.conf and add string "sensors" to  DAEMONS line - "DAEMONS=(syslog-ng crond ... sensors ...)"
+
+# * Or systemd -  Linux startup process by system management daemon
+"
+sudo systemctl enable lm_sensors
+sudo systemctl start lm_sensors
+"
+
+#------------------------------------------------#
+# Identification the graphics processing unit (GPU):
+# Code:
+"
+sudo lspci -nnk | grep -i vga -A2
+* Or
+sudo lshw -c video
+"
+####
+# For monitoring nVidia GPU temperature, clock, driver  you have to also install: nvidia nvidia-libgl mesa-demos or mesa-demos-x
+# For example:
+
+# * For Debian 8 "Jessie"
+# Add "contrib" and "non-free" components to /etc/apt/sources.list and update the list of available packages. Install the appropriate linux-headers and kernel module packages: 
+
+"
+su -c "echo >> /etc/apt/sources.list; echo deb http://http.debian.net/debian/ jessie main contrib non-free >> /etc/apt/sources.list"
+sudo aptitude update
+sudo aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
+"
+# For AMD ati fglrx
+"
+aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') fglrx-modules-dkms
+"
+# Configure glx
+"
+sudo update-alternatives --config glx
+"
+
+####
+# * For Arch
+# https://wiki.archlinux.org/index.php/NVIDIA
+# For GeForce 400 series cards and newer [NVCx and newer], install the nvidia or nvidia-lts package along with nvidia-libgl.
+# For GeForce 8000/9000, ION and 100-300 series cards [NV5x, NV8x, NV9x and NVAx] from around 2006-2010, install the nvidia-340xx
+# or nvidia-340xx-lts package along with nvidia-340xx-libgl.
+# For GeForce 6000/7000 series cards [NV4x and NV6x] from around 2004-2006, install the nvidia-304xx
+# or nvidia-304xx-lts package along with nvidia-304xx-libgl.
+# If you are on 64-bit and also need 32-bit OpenGL support, you must also install the equivalent lib32 package from the multilib repository 
+# (e.g. lib32-nvidia-libgl, lib32-nvidia-340xx-libgl or lib32-nvidia-304xx-libgl).
+
+####
+# * For go back to nouveau driver
+
+"
+sudo pacman -Rdds --noconfirm nvidia nvidia-libgl #lib32-nvidia-libgl lib32-mesa-libgl
+"
+"
+sudo pacman -S --needed --noconfirm --force nouveau-dri xf86-video-nouveau mesa-libgl mesa-demos #lib32-nouveau-dri lib32-mesa-libgl
+"
+
+####
+# * Check out:
+
+"
+sudo lspci -nnk | grep -i vga -A2
+egrep -i 'connected|card detect|primary dev|Setting driver|loadmodule' /var/log/Xorg.0.log
+glxinfo
+nvidia-settings -q gpucoretemp -t
+nvidia-smi -a | grep Gpu
+nvclock -T
+"
+
+####
+# * The Nvidia 340.46 drivers on the listed Ubuntu, Linux Mint, Pinguy OS and Elementary OS systems is easy.
+# All you have to do is add the ppa to your system, update the local repository index and install the nvidia-graphics-drivers-XXX package. Like this:
+"
+sudo add-apt-repository ppa:mamarley/nvidia
+sudo apt-get update
+sudo apt-get install nvidia-340
+"
+# Optional, to remove the nouveau drivers, do:
+"
+sudo apt-get remove nouveau-dri xf86-video-nouveau mesa-libgl
+"
+# Optional, to remove the Nvidia drivers, do:
+"
+sudo apt-get remove nvidia-340
+sudo apt-get install nouveau-dri xf86-video-nouveau mesa-libgl
+"
+####
+# * How to install the Nvidia 340.46 stable drivers from nvidia site on the most popular Linux systems, including:
+# Ubuntu, Linux Mint, Elementary OS, Pinguy OS, LXLE, Linux Lite, Deepin, Peppermint, Debian, Fedora, CentOS, OpenSUSE, Mageia and OpenMandriva....
+# Because the drivers are not available via any repository, we have to download the binary files from the official site:
+
+# For 32 bit systems:
+"
+wget us.download.nvidia.com/XFree86/Linux-x86/340.46/NVIDIA-Linux-x86-340.46.run
+"
+
+# For 64 bit systems:
+"
+wget us.download.nvidia.com/XFree86/Linux-x86_64/340.46/NVIDIA-Linux-x86_64-340.46.run
+"
+
+# Set execution permissions:
+"
+sudo chmod +x NVIDIA-Linux-*-340.46.run
+"
+
+# Stop the display manager, which can either be: kdm for KDE, gdm for Gnome, lightdm for LXDE and XFCE, mdm (for Linux Mint):
+# Exaple: Stop all
+"
+sudo /etc/init.d/kdm stop
+sudo /etc/init.d/gdm stop
+sudo /etc/init.d/lightdm stop
+sudo /etc/init.d/mdm stop
+sudo /etc/init.d/sddm stop
+"
+# And finally, run the Nvidia binary file:
+"
+sudo ./NVIDIA-Linux-*-340.46.run
+"
+
+#------------------------------------------------#
+# * For monitoring hdd activity you need compile the hdmon.c to binary program - run script
+"
+bash ./make_install_hdmon.sh
+"
+# To test if your hardrive is supported, try: 
+"
+hddtemp /dev/hdx
+"
+# Readme_hdmon.txt is in ./hdmon directory
+
+#------------------------------------------------#
+# * Some commands like hddtemp is normally run as root.
+# To be allowed to use hddtemp as a normal user, root needs to: "chmod a+s /usr/sbin/hddtemp".
+# Please note that this is probably not a good security practice.
+# You need chek the path in some linux distros the command can be in /usr/bin so you have to only change the path in EasyMonitor themes.
+
+# For exaple:
+
+"
+which hddtemp
+"
+
+# * Or you need to modify /etc/sudoers file to give users in group "users" access for some commands. 
+# * Or you need to modyfy rights by create and add rights in /etc/sudoers.d/EasyMonitor file 
+
+# For example:
+
+"
+sudo echo "## Entries for Easy Monitor users" > /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+sudo echo "## Check out all paths. The path strings must match exactly to lead command" >> /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+
+sudo echo "%users ALL=NOPASSWD:/sbin/hddtemp" >> /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+sudo echo "%users ALL=NOPASSWD:/sbin/hdparm" >> /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+sudo echo "%users ALL=NOPASSWD:/usr/sbin/ethtool" >> /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+sudo echo "%users ALL=NOPASSWD:/usr/sbin/dmidecode" >> /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+sudo echo "%users ALL=NOPASSWD:/usr/sbin/scanimage" >> /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+
+sudo echo "## End of Easy Monitor users entries" >> /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+
+sudo chmod 0440 /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+sudo chown root.root /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+"
+#------------------------------------------------#
+# the sudoers file is inportand and before copy it in right place check it out. Must have rights 0440 and own by root 
+
+"
+sudo visudo -c -f /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+if [ $? != 0 ]; then exit 1; fi
+sudo cp -fax  /tmp/Sudoers_Entries_for_Easy_Monitor.txt /etc/sudoers.d/EasyMonitor
+sudo rm -f /tmp/Sudoers_Entries_for_Easy_Monitor.txt
+"
+#------------------------------------------------#
+# * Script for modify EasyMonitor sudoers file is in the EasyMonitor directory.
+# To run it change current directory to EasyMonitor and type command:
+
+"
+bash  ./modify_sudoers.sh
+" 
+#------------------------------------------------#
+# * Of course your user have to belong to sudoers and users group
+# Now users in group %users have akccess to run command for exaple: "sudo /sbin/ethtool" without give the password
+# In some new instalations you need to give a password for root - "passwd root" ...
+
+https://help.ubuntu.com/community/Sudoers
+http://www.sudo.ws/man/1.8.14/sudoers.man.html
+https://wiki.archlinux.org/index.php/Sudo
+
+#------------------------------------------------#
+# * Exampe to run theme:
+
+"
+superkaramba "$HOME/.kde4/share/apps/superkaramba/themes/EasyMonitor/EasyMonitor.theme"
+"
+
+# In this theme is installation process for all Easy Monitor themes
+
+#------------------------------------------------#
+# * In EM_Net_WlanX_Interface sections - * change the device name device=wlan0 to your device name for get work *
+# Check out up interfaces
+
+"
+sudo route -n
+"
+#------------------------------------------------#
+# * In some distros command route is in /bin, so change the  "/sbin/route" in theme to "/bin/route"
+# Check out:
+
+"
+sudo which route
+"
+
+#------------------------------------------------#
+# * Tip for better look font on lcd displays - look for freetype2 Patched packages.  Example: 'yaourt freetype2-lcd' 
+
+# Or try to change in themes font name :
+# Example:
+# font="LiberationSans"
+# font="LiberationSans Oblique"
+# font="DejaVuSans-ExtraLight"
+
+# To see a list of known Fontconfig fonts:
+# Example:
+"
+fc-list : file
+# * or
+fc-list : file | grep -i Sans
+# * or
+fc-list : file | grep -i Condensed 
+
+# More example:
+https://wiki.archlinux.org/index.php/Font_configuration
+
+#------------------------------------------------#
+# * For to get work clikareas you have to lock theme position by clik RMB and lock. For edit theme clik on top frame.
+
+#------------------------------------------------#
+# * Run specific theme from konsle give you some additional informations to understand and fix some problems.
+
+#------------------------------------------------#
+# * For global change in all themes is good to use "kfilereplace"

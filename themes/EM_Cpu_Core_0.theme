@@ -1,0 +1,142 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Cpu_Core_0.theme Super Karamba theme
+################################################
+#                                              #
+#  Single Theme  EasyMonitor Core 0            #
+#                                              #
+################################################
+
+<GROUP>	X=0	Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=120	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image	x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image	x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image	x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image	x=0	y=102	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+################################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Cpu_Core_0.theme"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=90	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=105	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=90	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=105	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=105	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+###############################################
+
+</GROUP> =
+
+<GROUP>	X=0	Y=10
+
+################################################
+#                                              #
+#         Procesor Monitor Core 0              #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+# CPU Core 0
+
+text	x=20	y=12	align=left	fontsize=10 	value="Monitor Core 0 | Cache:"	interval=3600000
+text	x=140	y=12	align=left	fontsize=10 	sensor=program program="cat /proc/cpuinfo | grep 'cache size' | awk '{print  $4,$5}'| sed -n 1p"	interval=3600000
+
+###############################################
+# CPU Core 0 MHz Lines
+
+text	x=55	y=27	value="Core 0 Clock:"
+text	x=125	y=27	sensor=program program="cat /proc/cpuinfo | grep 'cpu MHz' | awk '{print  $4,$2}'| sed -n 1p"	interval=10000
+
+##############################################
+# CPU Core 0 Graph Usage Lines
+
+text	x=55	y=45	value="Core 0 Usage:"
+
+# CPU Core 0 Load graphs
+
+text	x=125	y=37 		align=left	color=255,0,0	value="Load    :"
+text	x=165	y=37		align=left	color=255,0,0	format="%load%"	sensor=cpu cpu=0	interval=1000
+graph	x=195	y=49 w=82 h=12	points=100	color=255,0,0	format="%load"	sensor=cpu cpu=0	interval=1000
+
+# CPU Core 0 System graphs
+
+text	x=125	y=49		align=left	color=0,128,255	value="System:"
+text	x=165	y=49		align=left	color=0,128,255	format="%system%"	sensor=cpu cpu=0	interval=1000
+graph	x=195	y=50 w=82 h=12	points=100	color=0,128,255	format="%system"	sensor=cpu cpu=0	interval=1000
+
+# CPU Core 0 User graphs
+
+text	x=125 y=61	 	align=left	color=0,255,0	value="User    :"
+text	x=165 y=61		align=left	color=0,255,0	format="%user%"	sensor=cpu cpu=0	interval=1000
+graph	x=195 y=49 w=82 h=12	points=100	color=0,255,0	format="%user"	sensor=cpu cpu=0	interval=1000
+
+# Bar CPU Core 0 Load graphs Usage:
+
+bar	x=195	y=45	format="%v"	sensor=cpu cpu=0	interval=1000	path="graphics/default/bar_cpu_usage.png"
+
+#################################################
+# Grill it  
+
+image	x=194	y=44	path="graphics/default/fcpu_quad_1.png"
+clickarea	x=194	y=44 h=20 w=85	preview=false onclick="konsole --hold -e cat /proc/cpuinfo"
+
+
+################################################### type= first column string from lm sensors
+#text	x=115	y=70  color=255,255,0 sensor=sensor type="temp1" format="+%v°C" interval=10000
+#text	x=115	y=80  color=255,255,0 sensor=sensor type="temp2" format="+%v°C" interval=10000
+#text	x=115	y=80  color=255,255,0 sensor=sensor type="CPU Temp" format="+%v°C" interval=10000
+
+#################################################
+# CPU Core 0 Temp Lines
+
+text	x=55	y=73		align=left	color=255,255,0	value="Core 0 Temp:"
+
+# sensor coretemp-* ( Intel thermal sensors... driver)
+#text	x=115	y=73		align=left	color=255,255,0	format="+%v°C"	sensor=sensor type="Core 0"	interval=10000
+text	x=115	y=73	color=255,255,0	sensor=program program="sensors | grep 'Core 0'| awk '{print $3}' | sort -rnt+ -k2 | head -n1" interval=10000
+# sensors k8temp-* ( AMD K8 thermal sensors... driver)
+text	x=115	y=73	color=255,255,0	sensor=program program="sensors | grep 'Core0'| awk '{print $3}' | sort -rnt+ -k2 | head -n1" interval=10000
+
+
+# sensor coretemp-* ( Intel thermal sensors... driver)
+graph	x=195	y=51 w=82 h=12	points=100 	color=255,255,0	format="%v"	sensor=sensor type="Core 0"	interval=10000
+# sensors k8temp-* ( AMD K8 thermal sensors... driver)
+graph	x=195	y=51 w=82 h=12	points=100 	color=255,255,0	sensor=program program="sensors | grep 'Core0'| awk '{print $3}' | sort -rnt+ -k2 | head -n1 | cut -d  '+' -f2 | cut -d '.' -f1" interval=10000
+# Bar Core 0 Temp Lines
+
+image	x=195	y=75	path="graphics/default/grid_1.png"
+
+# sensor coretemp-* ( Intel thermal sensors... driver)
+bar	x=195	y=76	format="%v"	sensor=sensor type="Core 0"	interval=10000	path="graphics/default/bar_cpu_temp_1.png"
+text	x=280	y=83	align=right	fontsize=8 	sensor=program program="sensors coretemp-*| grep 'Core'| sed -n 1p | awk '{print $4$5$6$7$8$9}'"	interval=3600000
+
+# sensors k8temp-* ( AMD K8 thermal sensors... driver)
+bar	x=195	y=76	sensor=program program="sensors | grep 'Core0'| awk '{print $3}' | sort -rnt+ -k2 | head -n1 | cut -d  '+' -f2 | cut -d '.' -f1"	interval=10000	path="graphics/default/bar_cpu_temp_1.png"
+
+# Click Areas
+
+clickarea x=55	y=73 h=18 w=225	preview=false onclick="konsole --hold -e sensors"
+
+################################################
+# Click-areas
+
+image	x=20	y=35		path="icons/default/cpu.png"
+clickarea x=20	y=35 h=38 w=38	preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/cpu_info.sh"
+
+################################################
+</GROUP> =
+

@@ -1,0 +1,85 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Scan.theme Super Karamba theme
+################################################
+#                                              #
+#  Single Theme Scanner Control                #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba x=0 y=0 w=304 h=100 locked=false
+defaultfont	fontsize=8	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_62_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=80	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Scan.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=60	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=80	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=60	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=80	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=80	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#               Scanner Control                #
+#                                              #
+################################################
+
+################################################
+# Scanner Control Title Lines
+
+text x=100 y=10 value="Scanner Control" fontsize=12
+
+text x=140 y=30 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'X=' | head -n1" align=left interval=7200
+text x=170 y=30 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep '_X=' | head -n1" align=left interval=7200
+text x=140 y=40 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'Y=' | head -n1" align=left interval=7200
+text x=170 y=40 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep '_Y=' | head -n1" align=left interval=7200
+text x=140 y=50 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'DPI=' | head -n1" align=left interval=7200
+
+
+text x=210 y=30 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'FORM=' | head -n1" align=left interval=7200
+text x=210 y=40 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'SIZE=' | head -n1" align=left interval=7200
+text x=210 y=50 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'QUALITY=' | head -n1" align=left interval=7200
+text x=20  y=62 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'NAME=' | head -n1" align=left interval=7200
+text x=140 y=62 sensor=program program="cat $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh |grep 'DEST=' | head -n1" align=left interval=7200
+
+################################################
+# Click-areas
+
+image x=20 y=28 path="icons/default/scanner_color.png"
+clickarea x=20 y=35 h=35 w=35 preview=false onclick="sh $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh color"
+
+image x=60 y=28 path="icons/default/scanner_gray.png"
+clickarea x=60 y=35 h=35 w=35 preview=false onclick="sh $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh gray"
+
+image x=100 y=28 path="icons/default/scanner_line.png"
+clickarea x=100 y=35 h=35 w=35 preview=false onclick="sh $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh lineart"
+
+################################################
+
+image x=270 y=60 path="icons/default/script_edit.png"
+clickarea x=270 y=60 h=10 w=10 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/scan.sh"
+
+################################################
+</GROUP> =

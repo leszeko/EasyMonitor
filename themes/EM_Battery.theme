@@ -1,0 +1,90 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Battery.theme Super Karamba theme
+################################################
+#                                              #
+#      Single Theme Battery  Momitor           #
+#                                              #
+################################################
+
+<GROUP>	X=0	Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=120	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Battery.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=90	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=105	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=90	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=105	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=105	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP>	X=0	Y=10
+
+################################################
+#                                              #
+#               Battery  Momitor               #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+
+text	x=100	y=10	fontsize=12	value="Battery  Monitor"
+
+################################################
+# Battery Type
+
+text	x=60	y=30	align="left"	color=0,255,255	value="Battery type:"
+text	x=130	y=30	align="left"	color=0,255,255	sensor=program	program="cat /proc/acpi/battery/BAT0/info | grep 'battery type:' | awk '{print $3}'"	interval=60000
+text	x=180	y=30	align="left"	color=0,255,255	sensor=program	program="cat /proc/acpi/battery/BAT0/info | grep 'OEM info:' | awk '{print $1,$2,$3}'"	interval=60000
+
+# Battery Model
+
+text	x=60	y=44	align="left"	color=1,255,1	value="Battery model:"
+text	x=130	y=44	align="left"	color=1,255,1	sensor=program	program="cat /proc/acpi/battery/BAT0/info | grep 'model number:' | awk '{print $3}'"	interval=60000
+
+# Battery Online or Offline
+
+text	x=60	y=58	align="left"	color=255,255,0	value="Adapter:"
+text	x=110	y=58	align="left"	color=255,255,0	sensor=program	program="acpi -a"	interval=60000
+
+# Battery Status
+
+text	x=152	y=73	align="center"	color=255,0,0	sensor=program	program="acpi -b"	interval=60000
+
+################################################
+
+bar	x=40	y=36	vertical=true	sensor=program	program="acpi -b| awk '{print $4}' | grep -o '[0-9]*'"	path="graphics/default/bar_battery.png"	interval=60000
+
+################################################
+# Click Areas
+
+image		x=20	y=35	path="icons/default/battery.png"
+clickarea	x=20	y=35	h=35	w=35	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/acpi.sh; exit 0"
+
+image		x=270	y=70	path="icons/default/script_edit.png"
+clickarea	x=270	y=70	h=12	w=12	preview=false	onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/acpi.sh; exit 0"
+
+################################################
+</GROUP> =

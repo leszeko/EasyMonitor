@@ -1,0 +1,78 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Net_Connections.theme Super Karamba theme
+################################################
+#                                              #
+# Single Theme Established Connections Monitor #
+#                                              #
+################################################
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=120	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# themes/backrounds Lines
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Net_Connections.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=90	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=105	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=90	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=105	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=105	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#     Established Connections Monitor          #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+font="monospace" fontsize=9
+text x=60 y=12 value="Established Connections:" color=255,0,0
+text x=190 y=12 sensor=program program="netstat -t | grep -c ESTABLISHED" color=255,0,0 font="monospace" fontsize=9 interval=5000
+
+clickarea	x=18	y=11	h=12 w=250 preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/network_info.sh; exit 0"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="cd $HOME/.superkaramba/EasyMonitor/themes/scripts/; kate nmap.sh network_info.sh net_iwconfig.sh net_ifconfig.sh net_dns_info.sh ip_info.sh; exit 0"
+
+################################################
+#
+
+text x=60 y=25  value="Local" color=255,255,0
+text x=92 y=40  sensor=program program="netstat -ntup | grep ESTABLISHED | awk '{print $4}' | tail -n5 | cut -d ':' -f 2"  align=right color=255,255,0 font="monospace" fontsize=8 interval=5000
+
+text x=102 y=25 value="Remote" color=1,255,1
+text x=102 y=40 sensor=program program="netstat -ntup | grep ESTABLISHED | awk '{print $5}' | tail -n5" color=1,255,1 font="monospace" fontsize=8 interval=5010
+
+text x=215 y=25 value="Process" color=255,0,255
+text x=215 y=40 sensor=program program="netstat -ntup | grep ESTABLISHED | awk '{print $7}' | tail -n5 | cut -d '/' -f 2"  align=left color=255,0,255 font="monospace" fontsize=8 interval=5020
+
+################################################
+# Click-areas
+
+image x=20 y=35 path="icons/default/knemo.png"
+clickarea x=20 y=35 h=35 w=35 preview=false onclick="konsole --hold -e sudo netstat -ntup"
+
+################################################
+</GROUP> =

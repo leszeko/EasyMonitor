@@ -1,0 +1,208 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Edit_System_Files.theme Super Karamba theme
+################################################
+#                                              #
+#  Single EM_Edit_System_Files.theme           #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=620	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+################################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=186	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=270	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=354	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=438	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=0	y=522	path="backrounds/areo/midle_bg_84_alfa_75.png"
+
+image x=0	y=606 	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Edit_System_Files.theme;exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=592	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=606	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=592	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=606	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=606	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=10
+
+################################################
+#                                              #
+#          EM Edit System Files                #
+#                                              #
+################################################
+
+################################################
+# Edit System Files Title Lines
+
+text x=150 y=10 value="Edit System Files" fontsize=12 align=center
+clickarea	x=36	y=11	h=12 w=230 preview=false onclick="(konsole --hold -e /bin/bash -c 'cd /bak/$(whoami); ls --color; Command () { while :; do read -e -p $(pwd )\>\  line;history -s ${line};${line}; done;}; Command')"
+
+#"( konsole --hold -e /bin/bash -c 'cd /bak/$(whoami); ls --color; /bin/bash' )"
+
+image		x=18	y=8	path="icons/default/info_2.png"
+clickarea	x=18	y=8	w=16	h=16	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/kate_info_man.sh kdialog"
+
+image		x=270	y=11 path="icons/default/script_edit.png"
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh; exit 0"
+
+################################################
+# Grub /boot/grub/menu.lst
+text	x=20	y=34 fontsize=10 align=left value="Grub - /boot/grub/menu.lst"
+image	x=16	y=30 path="backrounds/areo/backtittle_grin.png"
+clickarea x=18  y=32 w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /boot/grub/menu.lst"
+
+# Grub 2 /etc/default/grub & /etc/grub.d/40_custom
+text	x=20	y=54 fontsize=10 align=left value="Grub 2 - /etc/default/grub & /etc/grub.d/40_custom"
+image	x=16	y=50 path="backrounds/areo/backtittle_red.png"
+clickarea x=18  y=52 w=268 h=14 preview=false onclick="if ! [ -f /boot/grub2/grub.cfg ]; then grub_config=/boot/grub/grub.cfg;else grub_config=/boot/grub2/grub.cfg ; fi; cd $HOME/.superkaramba/EasyMonitor/themes/scripts/; konsole -e /bin/bash edit_system_files.sh $grub_config /etc/default/grub /etc/grub.d/40_custom"
+
+# Filesystem /etc/lilo.conf
+text	x=20	y=74 fontsize=10 align=left value="LILO - /etc/lilo.conf"
+image	x=16	y=70 path="backrounds/areo/backtittle_yellow.png"
+clickarea x=18  y=72 w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/lilo.conf"
+
+# sudoers /etc/sudoers /etc/sudoers.d/*
+text	x=34	y=94 fontsize=10 align=left value="Sudoers rights - /etc/sudoers & /etc/sudoers.d/*"
+image	x=16	y=90 path="backrounds/areo/backtittle_pink.png"
+image	x=16	y=92 path="icons/default/sudoers.png"
+clickarea x=18  y=92  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/sudoers /etc/sudoers.d/*"
+
+# sudoers /etc/passwd & group
+text	x=34	y=114 fontsize=10 align=left value="Passwd & group rights - /etc/passwd & group"
+image	x=16	y=110 path="backrounds/areo/backtittle_pink.png"
+image	x=16	y=112 path="icons/default/sudoers.png"
+clickarea x=18  y=112  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/passwd /etc/group"
+
+# samba /etc/samba/lmhosts smb.conf smbusers
+text	x=34	y=134 fontsize=10 align=left value="Samba lmhosts smb.conf smbusers"
+image	x=16	y=130 path="backrounds/areo/backtittle_blue.png"
+image	x=16	y=132 path="icons/default/sudoers.png"
+clickarea x=18  y=132  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/samba/lmhosts /etc/samba/smb.conf /etc/samba/smbusers"
+
+# Filesystem /etc/fstab
+text	x=34	y=154 fontsize=10 align=left value="Filesystem - /etc/fstab"
+image	x=16	y=150 path="backrounds/areo/backtittle_yellow.png"
+image	x=16	y=152 path="icons/default/fdisk_info.png"
+clickarea x=18  y=152 w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/fstab"
+
+# Debian Locales /etc/locale.gen /etc/default/console-setup & locale & keyboard
+text	x=34	y=194 fontsize=10 align=left value="Locales - /etc/locale.gen /etc/default/console-setup &"
+image	x=16	y=190 path="backrounds/areo/backtittle_red.png"
+image	x=18	y=192 path="icons/default/debian.svg"
+clickarea x=18  y=192  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/locale.gen /etc/default/console-setup /etc/default/locale /etc/default/keyboard"
+
+# Apt /etc/apt/sources.list /etc/appstream.conf
+text	x=34	y=214 fontsize=10 align=left value="Apt  sources.list - /etc/apt/sources.list appstream.conf"
+image	x=16	y=210 path="backrounds/areo/backtittle_red.png"
+image	x=18	y=212 path="icons/default/debian.svg"
+clickarea x=18  y=212  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/appstream.conf /etc/apt/sources.list"
+
+# Arch Locales /etc/locale.gen & /etc/vconsole.conf & /etc/locale.conf
+text	x=34	y=234 fontsize=10 align=left value="Locales - /etc/locale.gen & vconsole.conf"
+image	x=18	y=232 path="icons/default/arch.svg"
+image	x=16	y=230 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18  y=232  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/locale.gen /etc/locale.conf /etc/vconsole.conf"
+
+# Pacman /etc/pacman.conf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.pacnew
+text	x=34	y=254 fontsize=10 align=left value="Pacman - /etc/pacman.conf & mirrorlist"
+image	x=18	y=252 path="icons/default/arch.svg"
+image	x=16	y=250 path="backrounds/areo/backtittle_blue.png"
+clickarea x=18  y=252  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/pacman.conf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.pacnew"
+
+# Opensuse Locales /etc/sysconfig/language & console & keyboard
+text	x=34	y=274 fontsize=10 align=left value="Locales - /etc/sysconfig/language & console &"
+image	x=16	y=270 path="backrounds/areo/backtittle_grin.png"
+image	x=18	y=272 path="icons/default/opensuse.svg"
+clickarea x=18  y=272  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/sysconfig/language /etc/sysconfig/console /etc/sysconfig/keyboard"
+
+# Opensuse /etc/zypp/
+text	x=34	y=294 fontsize=10 align=left value="Zypper - /etc/zypp/zypper.conf"
+image	x=16	y=290 path="backrounds/areo/backtittle_grin.png"
+image	x=18	y=292 path="icons/default/opensuse.svg"
+clickarea x=18  y=292  w=268 h=14 preview=false onclick="konsole --hold -e ls /etc/zypp/repos.d/; konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/zypp/repos.d/* /etc/zypp/zypper.conf"
+
+# Gentoo Locales /etc/locale.gen & /etc/conf.d/consolefont /etc/conf.d/keymaps /etc/env.d/02locale
+text	x=34	y=314 fontsize=10 align=left value="Locales - /etc/locale.gen & /etc/conf.d/consolefont &"
+image	x=16	y=310 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=312 path="icons/default/gentoo.svg"
+clickarea x=18  y=312  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/locale.gen /etc/conf.d/consolefont /etc/conf.d/keymaps /etc/env.d/02locale"
+
+# Gentoo Portage /etc/portage/make.conf &  /etc/portage/package.use  & /etc/portage/repos.conf/gentoo
+text	x=34	y=334 fontsize=10 align=left value="Portage - /etc/portage/make.conf & package.use"
+image	x=16	y=330 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=332 path="icons/default/gentoo.svg"
+clickarea x=18  y=332  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/portage/make.conf /etc/portage/package.use /etc/portage/repos.conf/gentoo"
+
+# Sabayon entropy /etc/entropy/repositories.conf.d/*
+text	x=34	y=354 fontsize=10 align=left value="Sabayon entropy /etc/entropy/repositories.conf.d/*"
+image	x=16	y=350 path="backrounds/areo/backtittle_blue.png"
+image	x=18	y=352 path="icons/default/sabayonfoot.svg"
+clickarea x=18  y=352  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/entropy/repositories.conf.d/*"
+
+# Sabayon entropy /etc/entropy/*
+text	x=34	y=374 fontsize=10 align=left value="Sabayon entropy /etc/entropy/*"
+image	x=16	y=370 path="backrounds/areo/backtittle_blue.png"
+image	x=18	y=372 path="icons/default/sabayonfoot.svg"
+clickarea x=18  y=372  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/entropy/*"
+
+# Slackware slapt-get /etc/slapt-get/slapt-getrc
+text	x=34	y=394 fontsize=10 align=left value="Slackware slapt-get /etc/slapt-get/slapt-getrc"
+image	x=16	y=390 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=392 path="icons/default/slackware.svg"
+clickarea x=18  y=392  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/slapt-get/slapt-getrc"
+
+# Slackware slackpkg /etc/slackpkg/mirrors blacklist slackpkg.conf
+text	x=34	y=414 fontsize=10 align=left value="Slackware slackpkg slackpkg.conf blacklist mirrors"
+image	x=16	y=410 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=412 path="icons/default/slackware.svg"
+clickarea x=18  y=412  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/slackpkg/slackpkg.conf /etc/slackpkg/blacklist /etc/slackpkg/mirrors"
+
+# Slackware netpkg /etc/netpkg.conf
+text	x=34	y=434 fontsize=10 align=left value="Slackware netpkg /etc/netpkg.conf"
+image	x=16	y=430 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=432 path="icons/default/slackware.svg"
+clickarea x=18  y=432  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/netpkg.conf"
+
+# Slackware /etc/profile.d/lang.sh /etc/profile.d/lang.csh /etc/rc.d/rc.font
+text	x=34	y=454 fontsize=10 align=left value="Slackware keymap & font & lang.csh & lang.sh"
+image	x=16	y=450 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=452 path="icons/default/slackware.svg"
+clickarea x=18  y=452  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/rc.d/rc.keymap /etc/rc.d/rc.font /etc/profile.d/lang.csh /etc/profile.d/lang.sh"
+
+# Void Linux /etc/default/libc-locales /etc/rc.conf /etc/locale.conf # xbps-reconfigure -f glibc-locales
+text	x=34	y=474 fontsize=10 align=left value="Void libc-locales & rc.conf & locale.conf"
+image	x=16	y=470 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=472 path="icons/default/void.svg"
+clickarea x=18  y=472  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /etc/default/libc-locales /etc/rc.conf /etc/locale.conf"
+
+# Void Linux /usr/share/xbps.d /etc/xbps.d  # System repositories can be available at /usr/share/xbps.d, files bearing the same filename available in /etc/xbps.d override those defined in /usr/share/xbps.d.
+text	x=34	y=494 fontsize=10 align=left value="Void /usr/share/xbps.d/* & /etc/xbps.d/*"
+image	x=16	y=490 path="backrounds/areo/backtittle_white.png"
+image	x=18	y=492 path="icons/default/void.svg"
+clickarea x=18  y=492  w=268 h=14 preview=false onclick="konsole -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/edit_system_files.sh /usr/share/xbps.d/* /etc/xbps.d/*"
+
+################################################
+
+</GROUP> =

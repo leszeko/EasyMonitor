@@ -1,0 +1,120 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Filesystem.theme Super Karamba theme
+################################################
+#                                              #
+#      Single Theme File System                #
+#                                              #
+################################################
+
+<GROUP> X=0 Y=0
+
+################################################
+# Background Lines
+
+karamba	x=0	y=0	w=304	h=120	locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# themes/backrounds Lines
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_84_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=102	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Filesystem.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=90	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=105	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=90	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=105	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=105	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+################################################
+</GROUP> =
+
+<GROUP>	X=0	Y=10
+
+################################################
+#                                              #
+#               File System                    #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+text	x=20	y=11	fontsize=10	value="File System Usage :"
+text	x=120	y=11	fontsize=10	value="Free | Used | Capacity | Utilized"
+
+clickarea	x=18	y=11	h=12 w=250 preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_blk_info.sh; exit 0"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_blk_info.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh; exit 0"
+
+image		x=20 	y=35	path="icons/default/hdd.png"
+clickarea	x=20	y=35	h=35	w=35	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_blk_info.sh; exit 0"
+
+###############################################
+# Filesystem Usage Lines
+
+text	x=60	y=27	value="Root"
+text	x=90	y=27	value=":"
+text	x=95	y=27	align=left	sensor=disk			mountpoint="/"			format="%fg GB | %ug GB   | %tg GB | %up%"		interval=12000
+image	x=104	y=39	path="graphics/default/bar_trans.png"
+bar	x=105	y=39	w=100	h=3	vertical=false	sensor=disk	mountpoint="/"			format="%u"	path="graphics/default/hdd_bar.png"	interval=80000
+
+text	x=60	y=43	value="Home"
+text	x=90	y=43	value=":"
+text	x=95	y=43	align=left	sensor=disk			mountpoint="/home"		format="%fg GB | %ug GB | %tg GB | %up%"		interval=12000
+image	x=104	y=55	path="graphics/default/bar_trans.png"
+bar	x=105	y=55	w=100	h=3	vertical=false	sensor=disk	mountpoint="/home"		format="%u"	path="graphics/default/hdd_bar.png"	interval=80000
+
+text	x=60	y=59	value="Data"
+text	x=90	y=59	value=":"
+text	x=95	y=59	align=left	sensor=disk			mountpoint="/media/Dane_1"	format="%fg GB | %ug GB | %tg GB | %up%"		interval=12000
+image	x=104	y=71	path="graphics/default/bar_trans.png"
+bar	x=105	y=71	w=100	h=3	vertical=false	sensor=disk	mountpoint="/media/Dane_1"	format="%u"	path="graphics/default/hdd_bar.png"	interval=80000
+
+clickarea	x=63	y=30	h=45	w=170	preview=false	onclick="kdesu kate /etc/fstab"
+
+###############################################
+# Hard Disk Hddtemp Hdmon Lines
+
+text		x=60	y=77	fontsize=8	value="sda :"
+text		x=83	y=77	fontsize=8	align=left	color=255,255,0	sensor=program	program="sudo hddtemp /dev/sda |awk '{print $3,$4}'"	interval=90000
+bar		x=60	y=86	w=100	h=3	vertical=false	sensor=program	program="/usr/bin/hdmon sda"	path="graphics/default/hdd_bar_02.png"	interval=1000
+clickarea	x=60	y=77	h=10	w=80	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh /dev/sda; exit 0"
+
+text		x=160	y=77	fontsize=8	value="sdb :"
+text		x=183	y=77	fontsize=8	align=left	color=255,255,0	sensor=program	program="sudo hddtemp /dev/sdb | awk '{print $3,$4}'"	interval=90000
+bar		x=160	y=86	w=100	h=3	vertical=false	sensor=program	program="/usr/bin/hdmon sdb"	path="graphics/default/hdd_bar_04.png"	interval=1000
+clickarea	x=160	y=77	h=10	w=80	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh /dev/sdb; exit 0"
+
+################################################
+# Click Areas
+
+image		x=255	y=60	path="icons/default/palimpsest.png"
+clickarea	x=255	y=60	h=12	w=12	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND=kdesu ; fi ; if [ -x /usr/bin/palimpsest ] ; then $COMMAND /usr/bin/palimpsest ; exit 0 ; fi ; if [ -x /usr/bin/gnome-disks ] ; then $COMMAND /usr/bin/gnome-disks ;exit 0 ;fi ; kdialog --title 'Error' --msgbox 'You have to install palimpsest. Exaple: Ubuntu: - sudo apt-get install gnome-disk-utility or palimpsest'"
+
+#or "yast2 disk"
+#or "gparted"
+#or "palimpsest"
+#or "gnome-disks"
+#0r "partitionmanager"
+
+image		x=270	y=60	path="icons/default/bleachbit.png"
+clickarea	x=270	y=60	h=12	w=12	preview=false	onclick="if [ -x /usr/bin/bleachbit ] ; then /usr/bin/bleachbit; else kdialog --title 'Error' --msgbox 'You have to install bleachbit. Exaple: Ubuntu: - sudo apt-get install bleachbit'; fi"
+
+image		x=255	y=75	path="icons/default/fdisk_info.png"
+clickarea	x=255	y=75	h=12	w=12	preview=false	onclick="konsole --hold -e sudo /sbin/fdisk -l"
+
+image		x=270	y=75	path="icons/default/script_edit.png"
+clickarea	x=270	y=75	h=12	w=12	preview=false	onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh; exit 0"
+
+################################################
+</GROUP> =

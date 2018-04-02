@@ -1,0 +1,818 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Big_Tech_1.theme Super Karamba theme
+###################################################
+# Easy Monitor Super Karamba theme                #
+# Author: Leszek Ostachowski                      #
+# Tech background based on Tech Mon by Jon Clarke #
+# Based on Crystal Monitor by Mihael Simonic      #
+# Licence: GPL v2                                 #
+###################################################
+
+karamba x=0 y=0 w=304 h=810 locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# Change background image to suit
+
+image x=0 y=0 path="backrounds/tech/top_bar_alfa_75.png"
+image x=0 y=30 path="backrounds/tech/midle_bg_alfa_75.png"
+image x=16 y=16 path="backrounds/tech/backtittle_blue.png"
+
+image x=0 y=90 path="backrounds/tech/midle_bar_cpu_alfa_75.png"
+image x=0 y=134 path="backrounds/tech/midle_bg_alfa_75.png"
+image x=16 y=121 path="backrounds/tech/backtittle_blue.png"
+
+image x=0 y=194 path="backrounds/tech/midle_bar_memory_alfa_75.png"
+image x=0 y=238 path="backrounds/tech/midle_bg2_alfa_75.png"
+image x=16 y=225 path="backrounds/tech/backtittle_blue.png"
+
+image x=0 y=278 path="backrounds/tech/midle_bar_gpu_alfa_75.png"
+image x=0 y=322 path="backrounds/tech/midle_bg2_alfa_75.png"
+image x=16 y=309 path="backrounds/tech/backtittle_blue.png"
+
+
+image x=0 y=362 path="backrounds/tech/midle_bar_hdd_alfa_75.png"
+image x=0 y=406 path="backrounds/tech/midle_bg_alfa_75.png"
+image x=16 y=393 path="backrounds/tech/backtittle_blue.png"
+
+image x=0 y=466 path="backrounds/tech/midle_bar_network_alfa_75.png"
+image x=0 y=510 path="backrounds/tech/midle_bg_alfa_75.png"
+image x=16 y=497 path="backrounds/tech/backtittle_blue.png"
+
+image x=0 y=570 path="backrounds/tech/midle_bar_top_alfa_75.png"
+image x=0 y=614 path="backrounds/tech/midle_bg_alfa_75.png"
+image x=16 y=601 path="backrounds/tech/backtittle_blue.png"
+
+image x=0 y=674 path="backrounds/tech/midle_bar_sensors_alfa_75.png"
+image x=0 y=718 path="backrounds/tech/midle_bg_alfa_75.png"
+image x=16 y=705 path="backrounds/tech/backtittle_blue.png"
+
+image x=0 y=778 path="backrounds/tech/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Big_Tech_1.theme"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=770	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=790	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=770	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16	y=790	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=790	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+###############################################
+
+<GROUP> X=0 Y=9
+
+################################################
+#                                              #
+#               System                         #
+#                                              #
+################################################
+
+###############################################
+
+# Title Lines / User Machine Lines
+text	x=20	y=10	fontsize=12	value="User/Machine:"
+text	x=105	y=10	fontsize=12	sensor=program program="echo ${USER}@`hostname`|cut -c -26"	interval=3600000
+clickarea	x=18	y=11	h=12 w=215 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/os_info.sh"
+
+image		x=238	y=5	path="icons/default/jump-for-stuff.png"
+clickarea	x=238	y=5	w=16	h=16	preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/jump-for-stuff.sh"
+
+image		x=254	y=5	path="icons/default/script_edit.png"
+clickarea	x=254	y=5	h=12 w=12 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/jump-for-stuff.sh; exit 0"
+
+image		x=270	y=5 path="icons/default/info.png"
+clickarea	x=270	y=5 h=20 w=15 preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_About.theme; exit 0"
+
+# Distro Lines
+text	x=60	y=27	fontsize=10	value="Distro"
+text	x=110	y=27	fontsize=10	value=":"
+text	x=120	y=27	fontsize=9	sensor=program program="sh $HOME/.superkaramba/EasyMonitor/themes/scripts/os.sh| cut -c -36; exit 0" interval=3600000
+
+# Users Lines
+text	x=60	y=37	value="Users"
+text	x=110	y=37	value=":"
+text	x=120	y=37	sensor=program	program="who -q |sed -e '1d' |awk  -F= '{print $2}'"	interval=60000
+text	x=130	y=37	value=":"
+text	x=139	y=37	sensor=program	program="users |cut -c -25"				interval=60000
+
+# Date/Time Lines
+text	x=60	y=47	value="Date/Time"
+text	x=110	y=47	value=":"
+text	x=120	y=47	sensor=time format="ddd dd.MM.yyyy  /  hh:mm:ss" interval=1000
+
+# UpTime Lines
+text	x=60	y=57	value="Uptime"
+text	x=110	y=57	value=":"
+text	x=120	y=57	sensor=uptime format="%d day(s) %H h %M m" interval=60000
+
+# Kernel Lines
+text	x=60	y=67	value="Kernel"
+text	x=110	y=67	value=":"
+text	x=120	y=67	sensor=program program="uname -rmo |cut -c -36" interval=3600000
+
+# KDE and QT version Lines
+text	x=60	y=77	value="KDE/QT"
+text	x=110	y=77	value=":"
+text	x=120	y=77	sensor=program program="if [ $(which kde4-config) ]; then kde4-config --version | grep KDE | awk '{print $1, $2}'; else kde-config --version | grep KDE | awk '{print $1, $2}'; fi " interval=3600000
+text	x=220	y=77	sensor=program program="if [ $(which kde4-config) ]; then kde4-config --version | grep Qt | awk '{print $1, $2}'; else kde-config --version | grep Qt | awk '{print $1, $2}'; fi" interval=3600000
+
+###############################################
+# Click-areas
+
+image		x=20	y=35 path="icons/default/system.png"
+clickarea	x=20	y=35 h=40 w=40 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/hardware_info.sh; exit 0"
+
+image		x=270	y=75 path="icons/default/script_edit.png"
+clickarea	x=270	y=75 h=12 w=12 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/os_info.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/os.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/hardware_info.sh; exit 0"
+
+image		x=270	y=40 path="icons/default/hw_info.png"
+clickarea	x=270	y=40 h=12 w=12 preview=false onclick="kinfocenter"
+
+image		x=270	y=60 path="icons/default/terminals.png"
+clickarea	x=270	y=60 h=12 w=12 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/color_info.sh"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=113
+
+################################################
+#                                              #
+#         Procesor Monitor Multi Core          #
+#                                              #
+################################################
+
+###############################################
+# Title Lines: CPU Model
+
+text	x=20	y=11	fontsize=10	sensor=program program="echo `cat /proc/cpuinfo | grep '^model name' | head -1 | sed -e 's/^.*: //' | cut -c -50`"	interval=3600000
+text	x=250	y=11	fontsize=10	sensor=program program="cat /proc/cpuinfo | grep '^cpu cores'| head -1 | sed -e 's/^.*: //'"				interval=3600000
+text	x=260	y=11	fontsize=10	value="Cores"
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="konsole --hold -e cat /proc/cpuinfo"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/cpu_info.sh; exit 0"
+
+image	x=20	y=35		path="icons/default/cpu.png"
+clickarea x=20	y=35 h=38 w=38	preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/cpu_info.sh"
+
+###############################################
+# CPU Cache Size Lines
+
+text	x=60	y=27	value="CPU Caches:"
+text	x=120	y=27	sensor=program program="echo `cat /proc/cpuinfo | grep '^cache size' | sed -e 's/^.*: //'` | awk '{print $1,$3,$5,$7,$2}'" interval=3600000
+
+###############################################
+# CPU Clock Lines
+
+text	x=60	y=37	value="CPU Clocks :"
+text	x=120	y=37	sensor=program program="echo `cat /proc/cpuinfo | grep 'cpu MHz' | sed -e 's/.*: //'| sed -e 's/\\..../ MHz/'` | awk '{print $1,$3,$5,$7,$2}' " interval=10000
+
+##############################################
+# CPU Usage Lines
+
+text	x=60	y=47	color=0,255,0 fontsize=8 value="User"
+text	x=89	y=47	color=0,255,0 fontsize=8 value=":"
+text	x=93	y=47	color=0,255,0 fontsize=8 sensor=cpu cpu=all format=%user% interval=1000
+
+text	x=60	y=56	color=0,128,255 fontsize=8 value="System" 
+text	x=89	y=56	color=0,128,255 fontsize=8 value=":"
+text	x=93	y=56	color=0,128,255 fontsize=8 sensor=cpu cpu=all format=%system% interval=1000
+
+text	x=60	y=65	color=255,0,0	fontsize=8 value="Total"
+text	x=89	y=65	color=255,0,0	fontsize=8 value=":"
+text	x=93	y=65	color=255,0,0	fontsize=8 sensor=cpu cpu=all format="%v %" interval=1000
+
+text	x=118	y=56 fontsize=8 value="Threads:"
+
+# Bar CPU All Usage:
+
+bar	x=171	y=50	sensor=cpu cpu=all format="%v" interval=1000 path="graphics/default/bar_cpu_usage.png"
+
+# CPU 4 cores load graphs
+
+text	x=168	y=47	align=right	format="%v%"	color=255,0,0		sensor=cpu cpu=0 interval=1000
+graph	x=172	y=53	w=82 h=12	points=100	color=255,0,0 		sensor=cpu cpu=0 interval=1000
+
+text	x=168	y=64	align=right	format="%v%"	color=0,255,0		sensor=cpu cpu=1 interval=1000
+graph	x=172	y=54	w=82 h=12	points=100	color=0,255,0		sensor=cpu cpu=1 interval=1000
+
+text	x=260	y=47	align=left	format="%v%"	color=255,0,255 	sensor=cpu cpu=2 interval=1000
+graph	x=172	y=55	w=82 h=12	points=100	color=255,0,255 	sensor=cpu cpu=2 interval=1000
+
+text	x=260	y=64	align=lef	format="%v%"	color=0,0,255		sensor=cpu cpu=3 interval=1000
+graph	x=172	y=56	w=82 h=12	points=100	color=0,0,255		sensor=cpu cpu=3 interval=1000
+
+# Click Areas
+
+clickarea	x=146	y=47 h=10 w=20	preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Cpu_Core_0.theme; exit 0"
+clickarea	x=146	y=62 h=10 w=20	preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Cpu_Core_1.theme; exit 0"
+clickarea	x=258	y=47 h=10 w=20	preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Cpu_Core_2.theme; exit 0"
+clickarea	x=258	y=62 h=10 w=20	preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Cpu_Core_3.theme; exit 0"
+
+# Core 0 Temp graph
+
+graph	x=172	y=57	w=82 h=12	 points=100	color=255,255,0	sensor=program program="sensors | grep 'Core'| awk '{print $3}' | sort -rnt+ -k2 | head -n1 | cut -d  '+' -f2 | cut -d '.' -f1" interval=10000
+
+#################################################
+# Grill it 
+
+image		x=170	y=49	path="graphics/default/fcpu_quad_1.png"
+clickarea	x=170	y=49	h=20 w=85 preview=false onclick="konsole --hold -e cat /proc/cpuinfo"
+
+#################################################
+# CPU Temp Lines
+ 
+#text	x=60	y=70  color=255,255,0 value="CPU Temp:"
+
+################################################### type= first column string from lm sensors  
+#text	x=115	y=70  color=255,255,0 sensor=sensor type="temp1" format="+%v°C" interval=10000
+#text	x=115	y=80  color=255,255,0 sensor=sensor type="temp2" format="+%v°C" interval=10000
+
+
+# Hottest / Coldest Core Temp
+
+text	x=60	y=74	color=255,255,0 value="Hottest"
+text	x=95	y=74	color=255,255,0	sensor=program program="sensors | grep 'Core'| awk '{print $1,$3}' | sort -rnt+ -k2 | head -n1" interval=10000
+text	x=60	y=82	color=255,255,0 value="Coldest"
+text	x=95	y=82	color=255,255,0	sensor=program program="sensors | grep 'Core'| awk '{print $1,$3}' | sort -nt+ -k2 | head -n1" interval=10000
+
+################################################
+# Bar CPU Temp Bar Lines
+
+image	x=170	y=76	path="graphics/default/grid_1.png"
+bar	x=170	y=77	sensor=program program="sensors | grep 'Core'| awk '{print $3}' | sort -rnt+ -k2 | head -n1 | cut -d  '+' -f2 | cut -d '.' -f1"	interval=10000	path="graphics/default/bar_cpu_temp_1.png"
+
+image	x=170	y=85	path="graphics/default/grid_1.png"
+bar	x=170	y=86	sensor=program program="sensors | grep 'Core'| awk '{print $3}' | sort -nt+ -k2 | head -n1 | cut -d  '+' -f2 | cut -d '.' -f1"	interval=10000	path="graphics/default/bar_cpu_temp_1.png"
+
+# Click Areas
+
+clickarea x=60	y=74 h=18 w=195	preview=false onclick="konsole --hold -e sensors"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=218
+
+################################################
+#                                              #
+#                 Memory Usage                 #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+text	x=20	y=12	fontsize=10	value="Memory :"
+text 	x=66	y=13	sensor=program	program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/memory.sh"	interval=3600000
+
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="konsole --hold -e sudo /usr/sbin/dmidecode --type 17"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/memory_info.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/memory.sh; exit 0"
+
+image		x=20	y=27	path="icons/default/memory.png"
+clickarea	x=20	y=27	h=30	w=35	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/memory_info.sh; exit 0"
+
+################################################
+# Total Memory Info Lines
+
+text	x=60	y=27	value="Total  RAM  Memory"
+text	x=146	y=27	value=":"
+text	x=280	y=27	align=right	sensor=memory format="%tm MB"	interval=3600000
+image	x=150	y=32	path="graphics/default/mem_bar_1.png"
+
+################################################
+# Memory & Buffer In Use Info Lines
+
+text	x=60	y=37	value="Mem & Buffer Used"
+text	x=146	y=37	value=":"
+text	x=280	y=37	align=right	sensor=memory	format="%um MB" 					interval=4000
+bar	x=150	y=42	sensor=memory	format="%um"	vertical=false	path="graphics/default/mem_bar_2.png"	interval=4000
+
+################################################
+# Memory In Use Info Lines
+
+text	x=60	y=47	value="Memory In Use"
+text	x=146	y=47	value=":"
+text	x=280	y=47	align=right	sensor=memory	format="%umb MB" 					interval=4000
+bar	x=150	y=52	sensor=memory	format="%umb"	vertical=false	path="graphics/default/mem_bar_2.png"	interval=4000
+
+################################################
+# Swap Usage Info Lines
+
+text	x=60	y=57	value="Swap Usage"
+text	x=146	y=57	value=":"
+text	x=280	y=57	align=right	sensor=memory	format="%us MB"						interval=4000
+bar	x=150	y=62	sensor=memory	format="%us"	vertical=false	path="graphics/default/mem_bar_2.png"	interval=4000
+
+clickarea	x=60	y=27	h=42	w=220	preview=false	onclick="konsole --hold -e cat /proc/meminfo"
+###############################################
+</GROUP> =
+
+<GROUP> X=0 Y=302
+
+################################################
+#                                              #
+#               GPU Monitor                    #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+# GPU Name Lines
+
+text x=20 y=10 sensor=program program="LSPCI_COMMAND=`whereis -b lspci | awk '{print $2}'`; $LSPCI_COMMAND | grep 'VGA' | sed -e 's/.*: //' | cut -c -51" fontsize=10 interval=3600000
+
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh; exit 0"
+
+# Edit xorg.conf file
+
+image x=270 y=50 path="icons/default/xorg-settings.png"
+
+clickarea x=270 y=50 h=10 w=10 preview=false onclick="if [ -f /etc/X11/xorg.conf ]; then kdesu kate /etc/X11/xorg.conf; fi; if [ -f /etc/X11/xorg.conf.d/*-device.conf ]; then kdesu kate /etc/X11/xorg.conf.d/*-device.conf; fi; kate $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh; exit 0"
+
+################################################
+# GPU Lines
+text x=60 y=26 sensor=program program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Info" interval=3600000
+
+################################################
+# GPU Temp Lines
+text x=60  y=58 value="GPU Temp:"
+text x=115 y=58 sensor=program program="echo $(bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Temp)°C" interval=36000
+
+################################################
+# GPU Fan Speed
+text x=235 y=58 sensor=program program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Fan" interval=37000
+
+################################################
+# GPU Temp Bar
+bar x=145  y=60 w=20 h=0 path="graphics/default/bar_cpu_temp.png" max=80. sensor=program program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_query.sh GPU_Temp" interval=38000
+image x=145 y=60 path="graphics/default/grid_2.png"
+
+################################################
+# Click-areas
+image		x=20 y=35 path="icons/default/vga-settings.png"
+clickarea	x=20	y=35	h=30 w=40 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/vga_info.sh"
+
+################################################
+# End GPU section
+
+################################################
+#                                              #
+#               GPU Monitor ATI                #
+#                                              #
+################################################
+
+################################################
+# GPU Current Clock & Memory Lines ATI
+# Uncomment below section if you have ATI
+
+#text x=60 y=28 value="GPU @         MHz"
+#text x=100 y=28 sensor=program program="aticonfig --pplib-cmd 'get activity' | grep 'Current Activity is Core Clock:' | cut -b 33,34,35" align=left interval=4000
+
+#text x=180 y=28 value="RAM @         MHz"
+#text x=220 y=28 sensor=program program="aticonfig --pplib-cmd 'get activity' | grep 'Memory Clock:' | cut -b 15,16,17" align=left interval=4000
+
+################################################
+
+################################################
+# GPU Usage ATI
+# Uncomment below section if you have ATI
+
+#text x=60 y=52 value="GPU Usage:       %"
+#text x=117 y=52 sensor=program program="aticonfig --pplib-cmd 'get activity' | grep 'Activity:' | cut -b 10,11,12" align=left interval=4000
+
+################################################
+# GPU Usage Bar ATI
+# Uncomment below section if you have ATI
+
+#bar x=180 y=55 w=20 h=0 path="graphics/default/bar_cpu_temp.png" max=80. sensor=program program="aticonfig --pplib-cmd 'get activity' | grep 'Activity:' | cut -b 10,11,12" interval=4000
+
+#image x=180 y=55 path="graphics/default/grid_2.png"
+
+#################################################
+
+#################################################
+# GPU Temp Lines ATI
+# Uncomment below section if you have ATI
+
+#text x=60 y=40 value="GPU Temp:"
+#text x=115 y=40 sensor=program program="aticonfig --pplib-cmd 'get temperature 0' | cut -b 41,42" interval=4000
+#text x=129 y=40 value="°C"
+
+################################################
+# GPU Temp Bar ATI
+# Uncomment below section if you have ATI
+
+#bar x=180 y=43 w=20 h=0 path="graphics/default/bar_cpu_temp.png" max=80. sensor=program program="aticonfig --pplib-cmd 'get temperature 0' | cut -b 41,42" interval=4000
+
+#image x=180 y=43 path="graphics/default/grid_2.png"
+
+################################################
+
+################################################
+# Click-areas ATI
+# Uncomment below section if you have ATI
+
+#image x=20 y=35 path="icons/default/vga-settings.png"
+#clickarea x=20 y=32 h=30 w=40 onclick="amdcccle"
+
+################################################
+# End ATI section
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=386
+
+################################################
+#                                              #
+#               File System                    #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+text	x=20	y=11	fontsize=10	value="File System Usage :"
+text	x=120	y=11	fontsize=10	value="Free | Used | Capacity | Utilized"
+
+clickarea	x=18	y=11	h=12 w=250 preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_blk_info.sh; exit 0"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_blk_info.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh; exit 0"
+
+image		x=20 	y=35	path="icons/default/hdd.png"
+clickarea	x=20	y=35	h=35	w=35	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_blk_info.sh; exit 0"
+
+###############################################
+# Filesystem Usage Lines
+
+text	x=60	y=27	value="Root"
+text	x=90	y=27	value=":"
+text	x=95	y=27	align=left	sensor=disk			mountpoint="/"			format="%fg GB | %ug GB   | %tg GB | %up%"		interval=12000
+image	x=104	y=39	path="graphics/default/bar_trans.png"
+bar	x=105	y=39	w=100	h=3	vertical=false	sensor=disk	mountpoint="/"			format="%u"	path="graphics/default/hdd_bar.png"	interval=80000
+
+text	x=60	y=43	value="Home"
+text	x=90	y=43	value=":"
+text	x=95	y=43	align=left	sensor=disk			mountpoint="/home"		format="%fg GB | %ug GB | %tg GB | %up%"		interval=12000
+image	x=104	y=55	path="graphics/default/bar_trans.png"
+bar	x=105	y=55	w=100	h=3	vertical=false	sensor=disk	mountpoint="/home"		format="%u"	path="graphics/default/hdd_bar.png"	interval=80000
+
+text	x=60	y=59	value="Data"
+text	x=90	y=59	value=":"
+text	x=95	y=59	align=left	sensor=disk			mountpoint="/media/Dane_1"	format="%fg GB | %ug GB | %tg GB | %up%"		interval=12000
+image	x=104	y=71	path="graphics/default/bar_trans.png"
+bar	x=105	y=71	w=100	h=3	vertical=false	sensor=disk	mountpoint="/media/Dane_1"	format="%u"	path="graphics/default/hdd_bar.png"	interval=80000
+
+clickarea	x=63	y=30	h=45	w=170	preview=false	onclick="kdesu kate /etc/fstab"
+
+###############################################
+# Hard Disk Hddtemp Hdmon Lines
+
+text		x=60	y=77	fontsize=8	value="sda :"
+text		x=83	y=77	fontsize=8	align=left	color=255,255,0	sensor=program	program="sudo hddtemp /dev/sda |awk '{print $3,$4}'"	interval=90000
+bar		x=60	y=86	w=100	h=3	vertical=false	sensor=program	program="/usr/bin/hdmon sda"	path="graphics/default/hdd_bar_02.png"	interval=1000
+clickarea	x=60	y=77	h=10	w=80	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh /dev/sda; exit 0"
+
+text		x=160	y=77	fontsize=8	value="sdb :"
+text		x=183	y=77	fontsize=8	align=left	color=255,255,0	sensor=program	program="sudo hddtemp /dev/sdb | awk '{print $3,$4}'"	interval=90000
+bar		x=160	y=86	w=100	h=3	vertical=false	sensor=program	program="/usr/bin/hdmon sdb"	path="graphics/default/hdd_bar_04.png"	interval=1000
+clickarea	x=160	y=77	h=10	w=80	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh /dev/sdb; exit 0"
+
+################################################
+# Click Areas
+
+image		x=255	y=60	path="icons/default/palimpsest.png"
+clickarea	x=255	y=60	h=12	w=12	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND=kdesu ; fi ; if [ -x /usr/bin/palimpsest ] ; then $COMMAND /usr/bin/palimpsest ; exit 0 ; fi ; if [ -x /usr/bin/gnome-disks ] ; then $COMMAND /usr/bin/gnome-disks ;exit 0 ;fi ; kdialog --title 'Error' --msgbox 'You have to install palimpsest. Exaple: Ubuntu: - sudo apt-get install gnome-disk-utility or palimpsest'"
+
+#or "yast2 disk"
+#or "gparted"
+#or "palimpsest"
+#or "gnome-disks"
+#0r "partitionmanager"
+
+image		x=270	y=60	path="icons/default/bleachbit.png"
+clickarea	x=270	y=60	h=12	w=12	preview=false	onclick="if [ -x /usr/bin/bleachbit ] ; then /usr/bin/bleachbit; else kdialog --title 'Error' --msgbox 'You have to install bleachbit. Exaple: Ubuntu: - sudo apt-get install bleachbit' ;fi"
+
+image		x=255	y=75	path="icons/default/fdisk_info.png"
+clickarea	x=255	y=75	h=12	w=12	preview=false	onclick="konsole --hold -e sudo /sbin/fdisk -l"
+
+image		x=270	y=75	path="icons/default/script_edit.png"
+clickarea	x=270	y=75	h=12	w=12	preview=false	onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/file_system_hdd_test.sh; exit 0"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=488
+
+################################################
+#                                              #
+#         Ethernet Interface eth0              #
+#                                              #
+################################################
+
+################################################
+# Title Lines
+
+text x=20 y=12 value="Network eth0: IP adress |  Gateway  |   Name Servers" fontsize=10
+
+clickarea	x=18	y=11	h=12 w=250 preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/network_info.sh; exit 0"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="cd $HOME/.superkaramba/EasyMonitor/themes/scripts/; kate nmap.sh network_info.sh net_iwconfig.sh net_ifconfig.sh net_dns_info.sh ip_info.sh; exit 0"
+
+################################################
+# Networking Info Lines
+
+text x=60 y=30 sensor=program program="$(whereis -b ifconfig|awk '{print $2}') eth0 | grep 'inet ' | cut -d t -f2 | cut -d ' ' -f2 | cut -d ':' -f2 | cut -d / -f1" interval=360000
+#or
+#text x=60 y=30 sensor=program program="$(whereis -b ip|awk '{print $2}') addr show eth0 | grep "inet " | cut -d t -f2 | cut -d ' ' -f2 | cut -d / -f1" interval=360000
+
+
+text x=207 y=30  align=right sensor=program program="$(whereis -b route|awk '{print $2}') -n | grep 'UG' |awk '{print $2, $8}' | head -n1" interval=360000
+
+text x=285 y=30  align=right sensor=program program="cat /etc/resolv.conf |grep 'nameserver' | sort -r | awk '{print NR,$0 }' |grep '2 '| awk '{print $3}'" interval=360000
+
+text x=285 y=40  align=right sensor=program program="cat /etc/resolv.conf |grep 'nameserver' | sort -r | awk '{print NR,$0 }' |grep '1 '| awk '{print $3}'" interval=360000
+
+################################################
+# Public IP:
+
+text x=60 y=40 value="Public IP:" 
+
+text x=110 y=40  align=left sensor=program program="public_ip=$(wget -O - http://checkip.dyndns.org/index.html | cut -d ' ' -f 6 | cut -d '<' -f 1);echo $public_ip" interval=350000
+
+################################################
+# ethtool eth0 Speed Info Lines
+
+text x=60 y=50 color=1,160,247 fontsize=8 value="Local link"
+
+text x=98 y=50 aling=left color=1,160,247 fontsize=8 sensor=program program="sh $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ethtool.sh eth0; exit " interval=360000 
+#or
+#text x=100 y=50 aling=left color=1,160,247 fontsize=8 sensor=program program="dmesg |grep 'eth0: link' | awk '{print $3, $6, $7, $8, $9}'" interval=360000
+
+text  x=165 y=50 color=1,247,1 fontsize=8 value="Rx"
+text  x=225 y=50 align=right color=1,247,1 fontsize=8 decimals=1 sensor=network device="eth0" format="%in KB/s" interval=3000
+
+text  x=206 y=60 color=1,247,1 fontsize=8 value="Load"
+text x=286 y=60 align=right color=1,247,1 fontsize=8 sensor=program program="$(whereis -b ifconfig|awk '{print $2}') eth0 | grep 'RX' | grep 'bytes'| cut -d '(' -f2 | cut -d ')' -f1" interval=15000 
+
+text  x=232 y=50 color=247,1,1 fontsize=8 value="Tx"
+
+text  x=286 y=50 align=right color=247,1,1 fontsize=8  decimals=1 sensor=network device="eth0" format="%out KB/s" interval=3000
+text  x=206 y=70 color=247,1,1 fontsize=8 value="Send"
+text x=286 y=70 align=right color=247,1,1 fontsize=8 sensor=program program="$(whereis -b ifconfig|awk '{print $2}') eth0 | grep 'TX' | grep 'bytes'| cut -d 'T' -f2 | cut -d '(' -f2 | cut -d ')' -f1" interval=15000 
+
+################################################
+# eth0 Speed graph
+
+text  x=60 y=60 color=1,247,1 fontsize=8 value="Downstream"
+text  x=60 y=70 color=247,1,1 fontsize=8 value="Upstream"
+
+image x=116 y=60 path="graphics/default/fcpu_quad_2.png"
+
+graph x=116 y=61 w=83 h=17 color=247,1,1 points=100 sensor=network format="%out" device="eth0" max=200 interval=3100
+
+graph x=117 y=60 w=82 h=15 color=1,247,1 points=100 sensor=network format="%in" device="eth0" max=1500 interval=3100
+
+################################################
+# Connections TCP / UDP
+
+text x=60 y=82 value="TCP connections:"
+text x=144 y=82  align=left sensor=program program="netstat  |grep -Fc 'tcp'" interval=40000
+
+text x=160 y=82 value="UDP connections:"
+text x=246 y=82  align=left sensor=program program="netstat -lu |grep -Fc 'udp'" interval=50000
+
+################################################
+# Click-areas
+
+image x=20 y=35 path="icons/default/network.png"
+clickarea x=20 y=35 h=40 w=40 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ifconfig.sh; exit 0"
+
+clickarea x=130 y=30 h=10 w=60 preview=false onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/nmap.sh '192.168.1.* 192.168.0.* 10.0.0.*'; exit 0"
+
+clickarea x=60 y=84 h=10 w=85 preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Netstat_TCP.theme; exit 0"
+
+clickarea x=160 y=84 h=10 w=85 preview=false onclick="superkaramba $HOME/.superkaramba/EasyMonitor/themes/EM_Netstat_UDP.theme; exit 0"
+
+image x=270 y=80 path="icons/default/script_edit.png"
+clickarea x=270 y=80 h=10 w=10 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ifconfig.sh; kate $HOME/.superkaramba/EasyMonitor/themes/scripts/net_ethtool.sh; kate $HOME/.superkaramba/EasyMonitor/themes/scripts/nmap.sh; exit 0"
+
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=594
+
+################################################
+#                                              #
+#               Top Monitor                    #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+# Namber of Tasks
+
+text	x=20	y=10	align=left	fontsize=11	value="Tasks :"
+text	x=60	y=10	align=left	fontsize=11	sensor=program program="ps xa | wc -l" interval=5000
+text	x=88	y=10	align=left	fontsize=11	value="COMMAND  USER  %CPU    ALL"
+
+# Click Areas
+
+clickarea	x=20	y=10	h=11	w=250	preview=false	onclick="konsole -e top"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/top_info.sh; exit 0"
+
+image		x=20	y=35	path="icons/default/top.png"
+clickarea	x=20	y=35	h=40	w=40	preview=false	onclick="konsole --hold -e pstree"
+
+################################################
+# Top Lines
+
+# List
+text	x=200	y=30	align=right	color=color=220,0,220	sensor=program program="ps axo comm,user,pcpu --sort -pcpu | head -n6 |tail -n5 "	interval=5000 
+
+
+text	x=215	y=30	align=left	color=220,220,0		value="Running"
+text	x=255	y=30	align=left	color=220,220,0		value=":"
+text	x=260	y=30	align=left 	color=220,220,0		sensor=program program="ps axr| wc -l"	interval=1500
+
+text	x=215	y=45	align=left	color=220,0,0		value="Load"
+text	x=255	y=45	align=left	color=220,0,0		value=":"
+text	x=260	y=45	align=left	color=220,0,0		sensor=cpu cpu=all format=%load%	interval=1500
+
+text	x=215	y=60	align=left	color=0,128,255		value="System"
+text	x=255	y=60	align=left	color=0,128,255		value=":"
+text	x=260	y=60	align=left	color=0,128,255		sensor=cpu cpu=all format=%system%	interval=1500
+
+text	x=215	y=75	align=left	color=0,255,0		value="User"
+text	x=255	y=75	align=left	color=0,255,0		value=":"
+text	x=260	y=75	align=left	color=0,255,0		sensor=cpu cpu=all format=%user%	interval=1500
+
+################################################
+# Click Areas
+image		x=20	y=75	path="icons/default/system-shutdown1.png"
+clickarea	x=20	y=75	h=16	w=16	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND='kdesu -c' ; fi ; $COMMAND 'shutdown -h +60' ;exit 0"
+image		x=40	y=75	path="icons/default/system-shutdown2.png"
+clickarea	x=40	y=75	h=16	w=16	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND='kdesu -c' ; fi ; $COMMAND 'shutdown -h +90' ;exit 0"
+image		x=60	y=75	path="icons/default/system-shutdown3.png"
+clickarea	x=60	y=75	h=16	w=16	preview=false	onclick="if [ -x /usr/bin/kdesudo ] ;then COMMAND=kdesudo ; else COMMAND='kdesu -c'; fi ; $COMMAND 'shutdown -h 00:59' ;exit 0"
+################################################
+</GROUP> =
+
+<GROUP> X=0 Y=698
+
+################################################
+#                                              #
+#          Hardware Momitor                    #
+#                                              #
+################################################
+
+
+###############################################
+# Title Lines
+
+text x=150 y=10 value="Sensors Hardware Monitor" fontsize=12 align=center
+
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="konsole -e sh $HOME/.superkaramba/EasyMonitor/themes/scripts/sensors_info.sh; exit "
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/sensors_info.sh; exit 0"
+
+# Edit values, obtain values from Lm Sensors output, type sensors in a terminal window.
+####################################################################################################
+
+
+##################
+# Fans           #
+##################
+
+text x=60 y=30 value="CPU Fan:"
+
+text x=113 y=30 align=left color=0,255,255 sensor=program program="sensors | grep 'CPU Fan' | awk '{print $3 $4}'" interval=5000
+
+text x=113 y=30   align=left color=0,255,255 sensor=program program="sensors | grep 'fan1' | awk '{print $2, $3}'" interval=5000
+
+#############################################
+
+text x=160 y=30 value="System Fan:"
+
+text x=220 y=30  align=left color=0,255,255 sensor=program program="sensors | grep 'fan2' | awk '{print $2 $3}'" interval=11000
+
+#text x=220 y=30  align=left color=0,255,255 sensor=program program="sensors | grep 'fan5' | awk '{print $2, $3}'" interval=11000
+
+#############################################
+
+text x=60 y=40 value="Case Fan:"
+
+text x=113 y=40 align=left color=0,255,255 sensor=program program="sensors | grep 'Case Fan' | awk '{print $3 $4}'" interval=12000
+
+#text x=220 y=30 align=left color=0,255,255 sensor=program program="sensors | grep 'fan3' | awk '{print $2, $3}'" interval=11000
+
+#############################################
+
+text x=160 y=40 value="Aux. Fan:"
+
+text x=220 y=40  align=left color=0,255,255 sensor=program program="sensors | grep 'Aux Fan' | awk '{print $3 $4}'" interval=13000
+
+
+##################
+#    Power       #
+##################
+
+
+#############################################
+
+text x=60 y=50 value="V.Core:" fontsize=8
+
+text x=113 y=50 color=247,1,1 fontsize=8 sensor=program program="sensors | grep 'VCore' |awk '{print $2 $3}'" interval=14000
+
+##############################################
+
+text x=160 y=50 value="+12.0V:" fontsize=8
+
+text x=220 y=50  align=left color=247,1,1 fontsize=8 sensor=sensor type="+12V" format="+ %v V" interval=15000
+
+#text x=220 y=50  align=left color=247,1,1 fontsize=8 sensor=program program="sensors | grep '+12V:' | awk '{print $2 $3}'" interval=15000
+
+###################################################
+
+text x=60 y=60  fontsize=8 value="+5.0V:"
+
+text x=113 y=60  align=left color=247,1,1 fontsize=8 sensor=sensor type="+5V" format="+ %v V" interval=16000
+
+#text x=113 y=60  align=left color=247,1,1 fontsize=8 sensor=program program="sensors | grep '+5V:' | awk '{print $2 $3}'" interval=16000
+
+###################################################
+
+text x=160 y=60 value="+3.3V:" fontsize=8
+
+text x=220 y=60  align=left color=247,1,1 fontsize=8 sensor=sensor type="+3.3V" format="+ %v V" interval=17000
+
+#text x=220 y=60  align=left color=247,1,1 fontsize=8 sensor=program program="sensors | grep '3.3V:' | awk '{print $2 $3}'" interval=17000
+
+
+##################
+# temperatures   #
+##################
+
+
+################################################
+
+text x=20 y=70  align=left color=255,255,0 sensor=program program="sensors | grep 'CPU Temp' | awk '{print $1 $2 $3}'" interval=60000
+
+#text x=20 y=70  align=left color=255,255,0 sensor=program program="cat /proc/acpi/thermal_zone/THRM/temperature |cut -d: -f2" interval=60000
+
+#text x=20 y=70  align=left color=255,255,0 sensor=sensor type="temp2" format="%v°C" interval=60000
+
+
+
+# or
+# Core 0
+text x=40 y=70  color=255,255,0 sensor=program program="sensors k8temp-* |awk '{print NR,NR,$0 }' |grep '3 3' |awk '{print $3,$4}'" interval=10000
+
+text x=112 y=70 color=255,255,0 sensor=program program="sensors k8temp-* |awk '{print NR,NR,$0 }' |grep '4 4' |awk '{print $3}'" interval=10000
+
+text x=60 y=70 color=255,255,0 sensor=program program="sensors coretemp-* |awk '{print NR,NR,$0 }' |grep '3 3' |awk '{print $3,$4,$5}'" interval=10000
+
+
+# Core 1
+text x=152 y=70  color=255,255,0 sensor=program program="sensors k8temp-* |awk '{print NR,NR,$0 }' |grep '5 5' |awk '{print $3,$4}'" interval=10000
+
+text x=220 y=70 color=255,255,0 sensor=program program="sensors k8temp-* |awk '{print NR,NR,$0 }' |grep '6 6' |awk '{print $3}'" interval=10000 
+
+text x=160 y=70 color=255,255,0 sensor=program program="sensors coretemp-* |awk '{print NR,NR,$0 }' |grep '7 7' |awk '{print $3,$4,$5}'" interval=10000 
+
+##################################################
+
+text x=113 y=70 align=left color=255,255,0 sensor=program program="sensors | grep 'AUX Temp' | awk '{print $1 $2 $3}'" interval=70000
+
+#text x=113 y=70 align=left color=255,255,0 sensor=sensor type="temp3" format="%v°C" interval=60000
+
+################################################
+
+text x=206 y=70 align=left color=255,255,0 sensor=program program="sensors | grep 'Sys Temp' | awk '{print $1 $2 $3}'" interval=80000
+
+#text x=206 y=70  align=left color=255,255,0 sensor=sensor type="temp1" format="%v°C" interval=60000
+
+
+################################################
+# Click-areas
+
+image x=20 y=30 path="icons/default/fan.png"
+clickarea x=20 y=30 h=35 w=35 preview=false onclick="konsole --hold -e sensors"
+
+image x=270 y=80 path="icons/default/script_edit.png"
+clickarea x=270 y=80 h=10 w=10 preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/sensors_info.sh; exit 0"
+
+################################################
+</GROUP> =

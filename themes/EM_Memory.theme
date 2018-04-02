@@ -1,0 +1,98 @@
+#!/usr/bin/env superkaramba
+# coding: utf-8
+# EM_Memory.theme Super Karamba theme
+################################################
+#                                              #
+#          Single Theme Memory Usage           #
+#                                              #
+################################################
+
+<GROUP>	X=0	Y=0
+################################################
+# Background Lines
+
+karamba x=0 y=0 w=304 h=100 locked=false
+defaultfont	fontsize=9	color=220,220,220	shadow=1	bgcolor=0,0,0	font="LiberationSans"
+
+###############################################
+# Change background image to suit
+
+image x=0	y=0	path="backrounds/areo/top_bar_alfa_75.png"
+image x=0	y=18	path="backrounds/areo/midle_bg_62_alfa_75.png"
+image x=16	y=18	path="backrounds/areo/backtittle_blue.png"
+image x=0	y=80	path="backrounds/areo/bottom_bar_alfa_75.png"
+
+###############################################
+# Click-areas
+
+clickarea	x=0	y=0	h=15	w=15	preview=false onclick="$(xdg-settings get default-web-browser)  >/dev/null 2>&1"
+clickarea	x=16	y=0	h=15	w=265	preview=false onclick="kate $HOME/.superkaramba/EasyMonitor/themes/EM_Memory.theme; exit 0"
+clickarea	x=284	y=0	h=15	w=15	preview=false onclick="kate"
+clickarea	x=0	y=15	h=60	w=15	preview=false onclick="xdg-open $HOME"
+clickarea	x=0	y=80	h=15	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=284	y=15	h=60	w=15	preview=false onclick="/bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/xdg-terminal /bin/bash"
+clickarea	x=16 	y=80	h=15	w=265	preview=false onclick="superkaramba"
+clickarea	x=284	y=80	h=15	w=15	preview=false onclick="xdg-open $HOME/.superkaramba/EasyMonitor/"
+
+###############################################
+</GROUP> =
+
+
+<GROUP>	X=0	Y=10
+###############################################
+
+################################################
+#                                              #
+#                 Memory Usage                 #
+#                                              #
+################################################
+
+###############################################
+# Title Lines
+
+text	x=20	y=12	fontsize=10	value="Memory :"
+text 	x=66	y=13	sensor=program	program="bash $HOME/.superkaramba/EasyMonitor/themes/scripts/memory.sh"	interval=3600000
+
+clickarea	x=18	y=11	h=12 w=250 preview=false onclick="konsole --hold -e sudo /usr/sbin/dmidecode --type 17"
+
+clickarea	x=270	y=11	h=12 w=12 preview=false onclick=onclick="kate $HOME/.superkaramba/EasyMonitor/themes/scripts/memory_info.sh $HOME/.superkaramba/EasyMonitor/themes/scripts/memory.sh; exit 0"
+
+image		x=20	y=27	path="icons/default/memory.png"
+clickarea	x=20	y=27	h=30	w=35	preview=false	onclick="konsole --hold -e /bin/bash $HOME/.superkaramba/EasyMonitor/themes/scripts/memory_info.sh; exit 0"
+
+################################################
+# Total Memory Info Lines
+
+text	x=60	y=27	value="Total  RAM  Memory"
+text	x=146	y=27	value=":"
+text	x=280	y=27	align=right	sensor=memory format="%tm MB"	interval=3600000
+image	x=150	y=32	path="graphics/default/mem_bar_1.png"
+
+################################################
+# Memory & Buffer In Use Info Lines
+
+text	x=60	y=37	value="Mem & Buffer Used"
+text	x=146	y=37	value=":"
+text	x=280	y=37	align=right	sensor=memory	format="%um MB" 					interval=4000
+bar	x=150	y=42	sensor=memory	format="%um"	vertical=false	path="graphics/default/mem_bar_2.png"	interval=4000
+
+################################################
+# Memory In Use Info Lines
+
+text	x=60	y=47	value="Memory In Use"
+text	x=146	y=47	value=":"
+text	x=280	y=47	align=right	sensor=memory	format="%umb MB" 					interval=4000
+bar	x=150	y=52	sensor=memory	format="%umb"	vertical=false	path="graphics/default/mem_bar_2.png"	interval=4000
+
+################################################
+# Swap Usage Info Lines
+
+text	x=60	y=57	value="Swap Usage"
+text	x=146	y=57	value=":"
+text	x=280	y=57	align=right	sensor=memory	format="%us MB"						interval=4000
+bar	x=150	y=62	sensor=memory	format="%us"	vertical=false	path="graphics/default/mem_bar_2.png"	interval=4000
+
+clickarea	x=60	y=27	h=42	w=220	preview=false	onclick="konsole --hold -e cat /proc/meminfo"
+
+###############################################
+</GROUP> =
